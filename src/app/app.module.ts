@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './modules/login/login.component';
 import { EditorComponent } from './modules/editor/editor.component';
+import { PopupComponent } from './core/components/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { EditorComponent } from './modules/editor/editor.component';
     DashboardComponent,
     LoginComponent,
     EditorComponent,
+    PopupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

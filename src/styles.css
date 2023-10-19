@@ -1,12 +1,13 @@
 :root {
-  --white: '#ffffff',
-  --green-500: '#3aaf83',
-  --danger-500: '#d01111',
+  --white: #ffffff;
+  --green-500: #3aaf83;
+  --green-200: rgba(58,175,131,0.1);
+  --danger-500: #d01111;
 
-  --dark-500: '#3f3f3f', /* Textos */
-  --dark-400: '#8a8a8a', /* Sombras */
-  --dark-300: '#d9d9d9', /* Bordas */
-  --dark-200: '#ececec', /* Fundo Componentes */
+  --dark-500: #3f3f3f; /* Textos */
+  --dark-400: #8a8a8a; /* Sombras */
+  --dark-300: #d9d9d9; /* Bordas */
+  --dark-200: #ececec /* Fundo Componentes */
 
   /* Manter até modificarmos todos */
 
