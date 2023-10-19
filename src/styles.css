@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --white: '#ffffff',
+  --green-500: '#3aaf83',
+  --danger-500: '#d01111',
+
+  --dark-500: '#3f3f3f', /* Textos */
+  --dark-400: '#8a8a8a', /* Sombras */
+  --dark-300: '#d9d9d9', /* Bordas */
+  --dark-200: '#ececec', /* Fundo Componentes */
+
+  /* Manter até modificarmos todos */
+
+  /* --gray-100: '#f9f9f9',
+  --gray-200: '#efefef',
+  --gray-300: '#c7c7c7',
+  --gray-400: '#8d8d99',
+  --gray-500: '#7c7c8a', */
+}
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--white);
+    color:var(--dark-500);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body, input, textarea, button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    color: unset;
+    text-decoration: none;
+  }
+
+  ::-moz-selection, ::selection {
+    color: var(--white);
+    background: var(--green-500);
+  }
+
+  [focus] {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--green-500);
+  }
+
+  [disabled] {
+    opacity: 0.6;
+    color: var(--dark-400);
+    cursor: not-allowed;
+  };
