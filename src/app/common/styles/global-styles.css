@@ -1,0 +1,94 @@
+.cgs-button-custom {
+  background-color: transparent;
+  color: var(--white);
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  outline: 1px solid transparent;
+  transition: all 250ms;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.6;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  &:focus-within {
+    outline-color: var(--green-500);
+  }
+}
+
+.cgs-button-variant-neutral {
+  background-color: var(--dark-400);
+}
+
+.cgs-button-variant-primary {
+  background-color: var(--green-500);
+}
+
+.cgs-button-variant-danger {
+  background-color: var(--danger-500);
+}
+
+.cgs-forms-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &:focus-within {
+    & div, & input{
+      outline: 1px solid var(--green-500);
+    }
+  }
+
+  & label {
+    width: fit-content;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  & input {
+    background-color: var(--dark-200);
+    width: 100%;
+    height: 100%;
+    color: var(--dark-500);
+    padding: 0.75rem 0.5rem;
+    border: 0;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  & div {
+    /* background-color: var(--dark-200); */
+    background-image: linear-gradient(to right, var(--green-500) , transparent);
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    outline: 1px solid transparent;
+
+    display: flex;
+    align-items: center;
+
+    & img {
+      padding: 0 0.5rem;
+      cursor: pointer;
+    }
+
+    & input {
+      border-radius:  0;
+    }
+
+    & button {
+      background-color: transparent;
+      border: 0;
+      line-height: 0;
+    }
+  }
+}

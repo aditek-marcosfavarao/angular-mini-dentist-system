@@ -1,12 +1,14 @@
+@import "./app/common/styles/global-styles.css";
+
 :root {
   --white: #ffffff;
   --green-500: #3aaf83;
   --danger-500: #d01111;
 
-  --dark-200: #ececec;
-  --dark-300: #d9d9d9;
-  --dark-400: #8a8a8a;
-  --dark-500: #3f3f3f;
+  --dark-200: #f0f0f0; /* background */
+  --dark-300: #d9d9d9; /* border */
+  --dark-400: #c7c7c7; /* shadow */
+  --dark-500: #3f3f3f; /* text */
 }
 
 * {
