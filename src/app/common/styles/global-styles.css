@@ -20,6 +20,16 @@
 
   &:focus-within {
     outline-color: var(--green-500);
+
+    & span {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  & span {
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-color: transparent;
   }
 }
 
