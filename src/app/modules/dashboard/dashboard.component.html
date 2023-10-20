@@ -69,11 +69,11 @@
       </div>
       <ng-template #elseBlock>
         <h1>{{ profile.nome }}</h1>
-        <h2>Tratamento bla</h2>
+        <h2>Tratamento Print 3D</h2>
         <h3>Próxima consulta: 00</h3>
         <div class="aligment">
-          <h3>end , end</h3>
-          <h3>city / uf</h3>
+          <h3>Rua Pontife Supremo , 777</h3>
+          <h3>Bragança Paulista / SP</h3>
         </div>
       </ng-template>
     </div>
@@ -115,5 +115,6 @@
   <app-modal
     *ngIf="isModalVisible"
     (modalEvent)="onCloseModal()"
+    [customButtonName]="'Confirmar'"
   ></app-modal>
 </div>

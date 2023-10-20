@@ -4,7 +4,10 @@
   class="popupWrapper"
   (click)="closeModal()"
 >
-  <div class="popup">
+  <div
+    class="popup"
+    (click)="confirmAction($event)"
+  >
     <div>
       <h2>titulo</h2>
       <div class="content">infos</div>
@@ -15,11 +18,7 @@
         >
           Cancelar
         </button>
-        <!-- <CustomButton
-          variant={buttonColorVariant}
-        >
-          {nameButton}
-        </CustomButton> -->
+        <button class="customButton">{{ customButtonName }}</button>
       </div>
     </div>
   </div>

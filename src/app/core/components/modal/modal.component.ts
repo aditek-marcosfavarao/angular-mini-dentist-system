@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -7,7 +7,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ModalComponent {
   @Output() modalEvent = new EventEmitter<string>();
+  @Input() customButtonName = '';
+
   closeModal() {
     this.modalEvent.emit();
+  }
+  confirmAction(event: { stopPropagation: () => void }) {
+    event.stopPropagation();
   }
 }

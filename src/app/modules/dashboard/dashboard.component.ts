@@ -49,6 +49,7 @@ export class DashboardComponent {
   @Output() newItemEvent = new EventEmitter<Paciente>();
 
   @ViewChild('widgetsContent', { read: ElementRef })
+
   public widgetsContent!: ElementRef<any>;
 
   public scrollRight(): void {

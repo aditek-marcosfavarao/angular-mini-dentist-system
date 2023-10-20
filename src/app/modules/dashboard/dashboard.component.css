@@ -115,7 +115,6 @@
     padding: 0;
     height: auto;
     overflow: auto;
-
     display: block;
 
     &::before {
@@ -131,48 +130,48 @@
     }
 
   }
-  h1 {
+  .dashboard-container header .info h1 {
     font-size: 2rem;
   }
-  h2 {
+  .dashboard-container header .info h2 {
     font-size: 1.5rem;
   }
 
-  h3 {
+  .dashboard-container header .info h3 {
     font-size: 1rem;
   }
-  .aligment {
+  .dashboard-container header .info .aligment {
     display: flex;
     flex-direction: column;
     gap: 0;
     margin: 2rem 0 0 0;
   }
-  .icons {
+  .dashboard-container header .icons {
     justify-content: space-evenly;
     display: flex;
     align-items: center;
     gap: 2rem;
     margin:auto;
   }
-  .iconDeletCard {
+  .dashboard-container header .icons .iconDeletCard {
     z-index: 1;
     position: relative;
     top: 0;
     right: 0;
     cursor: pointer;
   }
-  .iconDeletCard svg{
+  .dashboard-container header .icons .iconDeletCard svg{
     width: 3rem;
     height: 3rem;
   }
-  .iconEditCard {
+  .dashboard-container header .icons .iconEditCard {
     z-index: 1;
     position: relative;
     top: 0;
     right: 0;
     cursor: pointer;
   }
-  .iconEditCard svg{
+  .dashboard-container header .icons .iconEditCard svg{
     margin: 0;
     width: 3rem;
     height: 3rem;
