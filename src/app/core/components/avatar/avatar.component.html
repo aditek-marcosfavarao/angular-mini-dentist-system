@@ -1,0 +1,10 @@
+<div *ngIf="large; else avatar">
+  <div class="avatarLarge">
+    <p>{{ avatarLetter }}</p>
+  </div>
+</div>
+<ng-template #avatar>
+  <div class="avatar">
+    <p>{{ avatarLetter }}</p>
+  </div>
+</ng-template>

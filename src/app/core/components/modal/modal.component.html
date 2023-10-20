@@ -1,0 +1,26 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div
+  class="popupWrapper"
+  (click)="closeModal()"
+>
+  <div class="popup">
+    <div>
+      <h2>titulo</h2>
+      <div class="content">infos</div>
+      <div class="buttons">
+        <button
+          class="buttonCancel"
+          (click)="closeModal()"
+        >
+          Cancelar
+        </button>
+        <!-- <CustomButton
+          variant={buttonColorVariant}
+        >
+          {nameButton}
+        </CustomButton> -->
+      </div>
+    </div>
+  </div>
+</div>

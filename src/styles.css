@@ -1,6 +1,7 @@
 :root {
   --white: #ffffff;
   --green-500: #3aaf83;
+  --green-200: rgba(58,175,131,0.1);
   --danger-500: #d01111;
 
   --dark-200: #ececec;

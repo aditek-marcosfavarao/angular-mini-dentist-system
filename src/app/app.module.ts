@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { EditorComponent } from './modules/editor/editor.component';
 import { LoginComponent } from './modules/login/login.component';
+import { AvatarComponent } from './core/components/avatar/avatar.component';
+import { ModalComponent } from './core/components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { LoginComponent } from './modules/login/login.component';
     DashboardComponent,
     EditorComponent,
     LoginComponent,
+    AvatarComponent,
+    ModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
