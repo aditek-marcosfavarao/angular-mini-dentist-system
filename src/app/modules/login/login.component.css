@@ -91,6 +91,16 @@
     font-weight: 600;
     line-height: 1.6;
 
+    & span {
+      text-decoration: underline;
+      text-underline-position: under;
+      text-decoration-color: transparent;
+
+      &:hover {
+        text-decoration-color: currentColor;
+      }
+    }
+
     &::first-letter {
       text-transform: capitalize;
     }
@@ -100,8 +110,6 @@
         padding: 0.5rem 1rem;
         border-radius: 2px;
         outline: 1px solid var(--green-500);
-        text-decoration: underline;
-        text-underline-position: under;
         text-decoration-color: var(--green-500);
       }
     }
