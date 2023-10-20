@@ -1,4 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prettier/prettier */
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+
+type ProfileClass = 'pcenter' | 'pspace';
 
 interface Paciente {
   id: number;
@@ -44,7 +48,38 @@ export interface Profile {
 export class DashboardComponent {
   @Output() newItemEvent = new EventEmitter<Paciente>();
 
+  @ViewChild('widgetsContent', { read: ElementRef })
+  public widgetsContent!: ElementRef<any>;
+
+  public scrollRight(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+  }
+
+  public scrollLeft(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
+  }
+
   profilesList: Paciente[] = [
+    { id: 1, nome: 'Ana Berigo' },
+    { id: 1, nome: 'Marcos Fanfarrão' },
+    { id: 1, nome: 'aabba dasads' },
+
+    { id: 1, nome: 'Ana Berigo' },
+    { id: 1, nome: 'Marcos Fanfarrão' },
+    { id: 1, nome: 'aabba dasads' },
+
+    { id: 1, nome: 'Ana Berigo' },
+    { id: 1, nome: 'Marcos Fanfarrão' },
+    { id: 1, nome: 'aabba dasads' },
+
+    { id: 1, nome: 'Ana Berigo' },
+    { id: 1, nome: 'Marcos Fanfarrão' },
+    { id: 1, nome: 'aabba dasads' },
+
+    { id: 1, nome: 'Ana Berigo' },
+    { id: 1, nome: 'Marcos Fanfarrão' },
+    { id: 1, nome: 'aabba dasads' },
+
     { id: 1, nome: 'Ana Berigo' },
     { id: 1, nome: 'Marcos Fanfarrão' },
     { id: 1, nome: 'aabba dasads' },
@@ -56,6 +91,8 @@ export class DashboardComponent {
   isDataEmpty = !this.profilesList.length;
   isProfileSelected = false;
   hasProfileData = !this.isDataEmpty && !this.isProfileSelected;
+  profileClassListBased: ProfileClass =
+    this.profilesList.length >= 10 ? 'pspace' : 'pcenter';
 
   avatarLetter = this.isProfileSelected
     ? this.getProfileNameLetter(this.profile.nome)
@@ -64,10 +101,6 @@ export class DashboardComponent {
   handleOpenModal() {
     this.isModalVisible = true;
   }
-
-  // handleSelectProfile(_profile: Profile) {
-  //   this.profile = _profile;
-  // }
   handleSelectProfile(_profile: Paciente) {
     this.profile = _profile;
     this.isProfileSelected = true;
@@ -81,17 +114,6 @@ export class DashboardComponent {
   getProfileNameLetter(name: string) {
     return name.substring(0, 1);
   }
-
-  // onDeletePatient = () => {
-  //   const profileList = this.profilesList;
-  //   const currentProfile = this.profile;
-  //   const deletedUser = profileList.filter(
-  //     (profile) => profile.id !== currentProfile.id
-  //   );
-  //   this.profilesList = deletedUser;
-  //   this.profile = {} as Profile;
-  //   this.isPopupVisible = false;
-  // };
   onDeletePatient = () => {
     const profileList = this.profilesList;
     const currentProfile = this.profile;
@@ -111,16 +133,6 @@ export class DashboardComponent {
     this.isModalVisible = false;
   }
 
-  // React.useEffect(() => {
-  //   ;(async function () {
-  //     try {
-  //       const response = await api.get('/profiles')
-  //       setProfilesList(response.data.profiles)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   })()
-  // }, [])
 
   hasProfilesInList = !this.profilesList.length;
   hasManyProfiles = this.profilesList.length > this.navbarElementsCapacity;
