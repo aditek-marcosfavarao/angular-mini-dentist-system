@@ -82,7 +82,7 @@
     border: 0;
     border-radius: 4px;
     overflow: hidden;
-    outline: 1px solid var(--dark-400);
+    outline: 1px solid var(--dark-200);
 
     display: flex;
     align-items: center;
@@ -172,4 +172,11 @@
 
 .ces-element-dimension-entirely {
   width: 100%;
+}
+
+/* reponsive */
+.ces-element-responsiveness {
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 }

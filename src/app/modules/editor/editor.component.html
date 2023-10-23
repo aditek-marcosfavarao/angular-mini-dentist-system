@@ -28,7 +28,9 @@
           <p>apontamentos</p>
 
           <div class="editor-content-section-line">
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="last-appointment-field"
                 class="ces-label-letterlized"
@@ -42,7 +44,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="next-appointment-field"
                 class="ces-label-letterlized"
@@ -64,7 +68,9 @@
           <p>tratamento</p>
 
           <div class="editor-content-section-line">
-            <div class="ces-forms-field ces-element-dimension-entirely">
+            <div
+              class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+            >
               <label
                 for="treatment-field"
                 class="ces-label-letterlized"
@@ -75,12 +81,22 @@
                 required
                 id="treatment-field"
                 type="text"
+                list="treatments"
               />
+
+              <datalist id="treatments">
+                <option
+                  *ngFor="let treatment of treatments"
+                  [value]="treatment.type"
+                ></option>
+              </datalist>
             </div>
           </div>
 
           <div class="editor-content-section-line">
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="treatment-start-field"
                 class="ces-label-letterlized"
@@ -94,7 +110,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="treatment-end-field"
                 class="ces-label-letterlized"
@@ -116,7 +134,9 @@
           <p>informações</p>
 
           <div class="editor-content-section-line">
-            <div class="ces-forms-field ces-element-dimension-entirely">
+            <div
+              class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+            >
               <label
                 for="name-field"
                 class="ces-label-letterlized"
@@ -132,7 +152,9 @@
           </div>
 
           <div class="editor-content-section-line">
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="cpf-field"
                 class="ces-label-capittalized"
@@ -146,7 +168,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="rg-field"
                 class="ces-label-capittalized"
@@ -160,7 +184,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="birthdate-field"
                 class="ces-label-letterlized"
@@ -174,7 +200,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-average">
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
               <label
                 for="age-field"
                 class="ces-label-letterlized"
@@ -193,7 +221,9 @@
           </div>
 
           <div class="editor-content-section-line">
-            <div class="ces-forms-field ces-element-dimension-entirely">
+            <div
+              class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+            >
               <label
                 for="address-field"
                 class="ces-label-letterlized"
@@ -209,7 +239,9 @@
           </div>
 
           <div class="editor-content-section-line">
-            <div class="ces-forms-field ces-element-dimension-average">
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
               <label
                 for="address-number-field"
                 class="ces-label-capittalized"
@@ -223,7 +255,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="address-completation-field"
                 class="ces-label-letterlized"
@@ -236,7 +270,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-large">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
               <label
                 for="address-city-field"
                 class="ces-label-letterlized"
@@ -250,7 +286,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-average">
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
               <label
                 for="address-uf-field"
                 class="ces-label-capittalized"
@@ -264,7 +302,9 @@
               />
             </div>
 
-            <div class="ces-forms-field ces-element-dimension-average">
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
               <label
                 for="address-cep-field"
                 class="ces-label-capittalized"

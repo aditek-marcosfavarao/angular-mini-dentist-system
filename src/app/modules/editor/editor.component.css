@@ -10,8 +10,8 @@
   border-radius: 4px;
   box-shadow: 0px 0px 8px 1px var(--dark-400);
 
-  @media (max-width: 480px) {
-    margin: 1rem;
+  @media (max-width: 720px) {
+    margin: auto 1rem;
   }
 }
 
@@ -114,6 +114,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 
   & h2 {
     text-transform: initial;
@@ -154,4 +155,5 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
