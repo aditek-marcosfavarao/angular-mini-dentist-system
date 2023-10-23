@@ -9,7 +9,6 @@
       justify-content: center;
       background-color: var(--green-200);
       border-bottom: 2px solid var(--green-200);
-      padding: 1rem;
     }
 }
 
@@ -28,15 +27,16 @@
   & .iconPatient{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 10px;
     align-items: center;
     margin: 5px 0px;
 
-    & p{
+    & .namePatient{
       width: 6rem;
       text-align: center;
       margin: 5px 0px;
       font-weight: bold;
+      font-size: 1.17rem;
     }
   }
 }
