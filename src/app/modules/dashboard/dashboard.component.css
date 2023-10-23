@@ -12,8 +12,8 @@
     }
 }
 
-.userAligment{
-
+.user-aligment{
+  padding: 0 1rem;
   flex: 1;
   margin: 0 1rem;
   display: flex;
@@ -24,14 +24,25 @@
     display: none;
   }
 
-  & .iconPatient{
+  & .icon-patient{
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
     margin: 5px 0px;
 
-    & .namePatient{
+    & button{
+      background-color: transparent;
+      border: 0;
+      line-height: 0;
+      outline: 2px solid transparent;
+      border-radius: 50%;
+
+      &:hover{
+        outline-color: var(--dark-300);
+      }
+    }
+    & .name-patient{
       width: 6rem;
       text-align: center;
       margin: 5px 0px;
@@ -113,7 +124,7 @@
     right: 1rem;
   }
 
-  & .iconEditCard svg{
+  & .icon-edit-card svg{
     margin-right: 3rem;
   }
 
@@ -202,4 +213,8 @@
 
 .pcenter {
   justify-content: center;
+}
+.highlighted-text{
+  color: var(--danger-500);
+  font-weight:  800;
 }

@@ -1,7 +1,7 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <div
-  class="popupWrapper"
+  class="popup-wrapper"
   (click)="closeModal()"
 >
   <div
@@ -9,16 +9,22 @@
     (click)="confirmAction($event)"
   >
     <div>
-      <h2>titulo</h2>
-      <div class="content">infos</div>
+      <h2>{{ customButtonTitle }}</h2>
+      <div class="content"><ng-content></ng-content></div>
       <div class="buttons">
         <button
-          class="buttonCancel"
+          class="ces-button ces-element-dimension-fit-content"
+          [ngClass]="'ces-button-variant-neutral'"
           (click)="closeModal()"
         >
           Cancelar
         </button>
-        <button class="customButton">{{ customButtonName }}</button>
+        <button
+          class="ces-button ces-element-dimension-fit-content teste"
+          [ngClass]="'ces-button-variant-' + customButtonColor"
+        >
+          {{ customButtonName }}
+        </button>
       </div>
     </div>
   </div>

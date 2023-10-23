@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 
+type ButtonColor = 'primary' | 'danger' | 'neutral';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -8,6 +9,8 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 export class ModalComponent {
   @Output() modalEvent = new EventEmitter<string>();
   @Input() customButtonName = '';
+  @Input() customButtonTitle = '';
+  @Input() customButtonColor: ButtonColor = 'neutral';
 
   closeModal() {
     this.modalEvent.emit();

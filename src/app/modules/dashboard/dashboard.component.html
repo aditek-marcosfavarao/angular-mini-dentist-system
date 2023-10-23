@@ -1,5 +1,3 @@
-<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <div class="dashboard-container">
   <nav>
     <div>
@@ -19,17 +17,21 @@
       </svg>
     </div>
     <div
-      class="userAligment"
+      class="user-aligment"
       #widgetsContent
       [ngClass]="profileClassListBased"
     >
       <div
-        class="iconPatient"
+        class="icon-patient"
         *ngFor="let p of profilesList"
-        (click)="handleSelectProfile(p)"
       >
-        <app-avatar [avatarLetter]="p.nome.substring(0, 1)"></app-avatar>
-        <p class="namePatient">{{ p.nome }}</p>
+        <button
+          type="button"
+          (click)="handleSelectProfile(p)"
+        >
+          <app-avatar [avatarLetter]="p.nome.substring(0, 1)"></app-avatar>
+        </button>
+        <p class="name-patient">{{ p.nome }}</p>
       </div>
     </div>
 
@@ -83,7 +85,7 @@
       *ngIf="isProfileSelected"
       class="icons"
     >
-      <div class="iconEditCard">
+      <div class="icon-edit-card">
         <svg
           width="24"
           height="24"
@@ -97,7 +99,7 @@
           />
         </svg>
       </div>
-      <div class="iconDeletCard">
+      <div class="icon-delet-card">
         <svg
           (click)="handleOpenModal()"
           width="24"
@@ -117,6 +119,15 @@
   <app-modal
     *ngIf="isModalVisible"
     (modalEvent)="onCloseModal()"
-    [customButtonName]="'Confirmar'"
-  ></app-modal>
+    customButtonName="Confirmar"
+    customButtonColor="danger"
+    customButtonTitle="Ação necessária"
+  >
+    <div>
+      <p>
+        A ação <span class="highlighted-text">não poderá</span> ser desfeita.
+        Deseja continuar?
+      </p>
+    </div>
+  </app-modal>
 </div>
