@@ -65,7 +65,7 @@ export class DashboardComponent {
     { id: 1, nome: 'Marcos Fanfarrão' },
     { id: 1, nome: 'aabba dasads' },
 
-    { id: 1, nome: 'Ana Berigo' },
+    { id: 1, nome: 'Ana Paula Berigo e Silva' },
     { id: 1, nome: 'Marcos Fanfarrão' },
     { id: 1, nome: 'aabba dasads' },
 

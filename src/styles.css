@@ -20,6 +20,7 @@
 body {
   background-color: var(--white);
   color:var(--dark-500);
+
   -webkit-font-smoothing: antialiased;
 }
 

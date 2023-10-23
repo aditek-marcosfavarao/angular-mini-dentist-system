@@ -61,20 +61,22 @@
       ></app-avatar>
     </ng-template>
     <div class="info">
-      <div *ngIf="isDataEmpty">
+      <div *ngIf="isDataEmpty; else elseBlock1">
         <h1>Não há pacientes cadastrados ainda</h1>
       </div>
-      <div *ngIf="!isProfileSelected; else elseBlock">
-        <h1>Clique em um paciente</h1>
-      </div>
-      <ng-template #elseBlock>
-        <h1>{{ profile.nome }}</h1>
-        <h2>Tratamento Print 3D</h2>
-        <h3>Próxima consulta: 00</h3>
-        <div class="aligment">
-          <h3>Rua Pontife Supremo , 777</h3>
-          <h3>Bragança Paulista / SP</h3>
+      <ng-template #elseBlock1>
+        <div *ngIf="!isProfileSelected; else elseBlock">
+          <h1>Clique em um paciente</h1>
         </div>
+        <ng-template #elseBlock>
+          <h1>{{ profile.nome }}</h1>
+          <h2>Tratamento Print 3D</h2>
+          <h3>Próxima consulta: 00</h3>
+          <div class="aligment">
+            <h3>Rua Pontife Supremo , 777</h3>
+            <h3>Bragança Paulista / SP</h3>
+          </div>
+        </ng-template>
       </ng-template>
     </div>
     <div

@@ -1,18 +1,20 @@
 .dashboard-container{
   background-color: var(--white);
   position: relative;
-  height: calc(100vh - 5.6rem);
   margin-bottom: 4rem;
+
+    & nav{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--green-200);
+      border-bottom: 2px solid var(--green-200);
+      padding: 1rem;
+    }
 }
-.dashboard-container nav{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--green-200);
-  border-bottom: 2px solid var(--green-200);
-  padding: 1rem;
-}
-.dashboard-container .userAligment{
+
+.userAligment{
+
   flex: 1;
   margin: 0 1rem;
   display: flex;
@@ -22,24 +24,27 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  & .iconPatient{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0px;
+
+    & p{
+      width: 6rem;
+      text-align: center;
+      margin: 5px 0px;
+      font-weight: bold;
+    }
+  }
 }
-.dashboard-container .userAligment .iconPatient{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5px 0px;
-}
-.dashboard-container .userAligment .iconPatient p{
-  width: 6rem;
-  text-align: center;
-  margin: 5px 0px;
-  font-weight: bold;
-}
+
 .dashboard-container header{
+
   background-color: var(--white);
   width: 80vw;
-  height: 20rem;
   margin: auto;
   margin-top: 3rem;
   padding: 1rem;
@@ -56,66 +61,68 @@
   &::before {
     content: '';
     background-color: var(--green-500);
-    width: 30rem;
+    width: 100rem;
     height: 35rem;
     position: absolute;
     top: 0;
     left: 0;
     rotate: 60deg;
-    translate: -20rem 0 0;
+    translate: -47rem 14rem;
   }
 
-}
-.dashboard-container header .info{
-  background-color: var(--white);
-  flex: 1;
-  margin: 2rem;
-}
-.dashboard-container header .info h1 {
-  font-size: 2.4rem;
-  line-height: 1.6;
-  position: relative;
-}
-.dashboard-container header .info h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  line-height: 1.6;
-  color: var(--green-500);
-  position: relative;
-}
+  & .info{
+    background-color: var(--white);
+    flex: 1;
+    margin: 2rem 4rem 2rem 2rem;
+    width: 100%;
+  }
 
-.dashboard-container header .info h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  line-height: 1.6;
-}
-.dashboard-container header .info .aligment {
-  display: flex;
-  flex-direction: row;
-  margin-top: 4rem;
-  gap: 7rem;
-}
-.dashboard-container header svg{
-    color: var(--green-500) ;
+  & h1 {
+    font-size: 2rem;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  & h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--green-500);
+    position: relative;
+  }
+
+  &  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  & .aligment {
+    display: flex;
+    flex-direction: row;
+    margin-top: 4rem;
+    gap: 7rem;
+  }
+
+  & svg{
     cursor: pointer;
     z-index: 1;
 
     position: absolute;
-    top: 2rem;
+    top: 1rem;
     right: 1rem;
+  }
 
-}
-.iconEditCard svg{
-  margin-right: 3rem;
-}
+  & .iconEditCard svg{
+    margin-right: 3rem;
+  }
 
-@media(max-width: 480px){
 
-  .dashboard-container header{
+  @media(max-width: 480px){
+
     padding: 0;
-    height: auto;
-    overflow: auto;
     display: block;
+    width: 80vw;
 
     &::before {
       content: '';
@@ -129,52 +136,63 @@
       translate: 0 -10rem;
     }
 
-  }
-  .dashboard-container header .info h1 {
-    font-size: 2rem;
-  }
-  .dashboard-container header .info h2 {
-    font-size: 1.5rem;
-  }
+    & .info {
+      background-color: var(--white);
+      flex: 1;
+      width: 100%;
+      padding:1rem;
+      margin: 0;
 
-  .dashboard-container header .info h3 {
-    font-size: 1rem;
-  }
-  .dashboard-container header .info .aligment {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 2rem 0 0 0;
-  }
-  .dashboard-container header .icons {
+      .aligment {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 2rem 0 0 0;
+      }
+    }
+
+    /* & .icons {
+      justify-content: space-evenly;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    } */
+    /* .dashboard-container header .icons {
     justify-content: space-evenly;
     display: flex;
     align-items: center;
     gap: 2rem;
-    margin:auto;
-  }
-  .dashboard-container header .icons .iconDeletCard {
+    margin-bottom: 1rem;
+  } */
+  /* .dashboard-container header .icons .iconDeletCard {
     z-index: 1;
     position: relative;
     top: 0;
     right: 0;
-    cursor: pointer;
-  }
-  .dashboard-container header .icons .iconDeletCard svg{
     width: 3rem;
     height: 3rem;
-  }
-  .dashboard-container header .icons .iconEditCard {
+    cursor: pointer;
+  } */
+  /* .dashboard-container header .icons .iconDeletCard svg{
+    width: 3rem;
+    height: 3rem;
+  } */
+  /* .dashboard-container header .icons .iconEditCard {
     z-index: 1;
     position: relative;
     top: 0;
     right: 0;
     cursor: pointer;
-  }
-  .dashboard-container header .icons .iconEditCard svg{
     margin: 0;
     width: 3rem;
     height: 3rem;
+  } */
+  /* .dashboard-container header .icons .iconEditCard svg{
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+  } */
   }
 }
 
