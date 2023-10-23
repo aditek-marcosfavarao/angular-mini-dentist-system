@@ -1,1 +1,358 @@
-<p>editor works!</p>
+<div class="editor-container">
+  <div class="editor-display">
+    <header class="editor-header">
+      <div class="editor-header-avatar"></div>
+      <div class="editor-header-info">
+        <h2>marcos adriano lorencini favarão</h2>
+        <h3>tratamento completo</h3>
+        <time>última edição: 01/01/0000</time>
+      </div>
+    </header>
+
+    <main class="editor-content">
+      <form action="">
+        <header class="editor-content-header">
+          <h2>editar informações do paciente</h2>
+          <button
+            type="submit"
+            class="ces-button ces-button-variant-primary ces-element-dimension-fit-content"
+          >
+            salvar
+          </button>
+        </header>
+
+        <section
+          #appointment
+          class="editor-content-section"
+        >
+          <p>apontamentos</p>
+
+          <div class="editor-content-section-line">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="last-appointment-field"
+                class="ces-label-letterlized"
+              >
+                última consulta
+              </label>
+              <input
+                required
+                id="last-appointment-field"
+                type="datetime-local"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="next-appointment-field"
+                class="ces-label-letterlized"
+              >
+                próxima consulta
+              </label>
+              <input
+                id="next-appointment-field"
+                type="datetime-local"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section
+          #treatment
+          class="editor-content-section"
+        >
+          <p>tratamento</p>
+
+          <div class="editor-content-section-line">
+            <div
+              class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+            >
+              <label
+                for="treatment-field"
+                class="ces-label-letterlized"
+              >
+                tipo de tratamento
+              </label>
+              <input
+                required
+                id="treatment-field"
+                type="text"
+                list="treatments"
+              />
+
+              <datalist id="treatments">
+                <option
+                  *ngFor="let treatment of treatments"
+                  [value]="treatment.type"
+                ></option>
+              </datalist>
+            </div>
+          </div>
+
+          <div class="editor-content-section-line">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="treatment-start-field"
+                class="ces-label-letterlized"
+              >
+                iniciado em
+              </label>
+              <input
+                required
+                id="treatment-start-field"
+                type="date"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="treatment-end-field"
+                class="ces-label-letterlized"
+              >
+                finalizado em
+              </label>
+              <input
+                id="treatment-end-field"
+                type="date"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section
+          #info
+          class="editor-content-section"
+        >
+          <p>informações</p>
+
+          <div class="editor-content-section-line">
+            <div
+              class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+            >
+              <label
+                for="name-field"
+                class="ces-label-letterlized"
+              >
+                nome
+              </label>
+              <input
+                required
+                id="name-field"
+                type="text"
+              />
+            </div>
+          </div>
+
+          <div class="editor-content-section-line">
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="cpf-field"
+                class="ces-label-capittalized"
+              >
+                cpf
+              </label>
+              <input
+                required
+                id="cpf-field"
+                type="text"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="rg-field"
+                class="ces-label-capittalized"
+              >
+                rg
+              </label>
+              <input
+                required
+                id="rg-field"
+                type="text"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="birthdate-field"
+                class="ces-label-letterlized"
+              >
+                nascimento
+              </label>
+              <input
+                required
+                id="birthdate-field"
+                type="date"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
+              <label
+                for="age-field"
+                class="ces-label-letterlized"
+              >
+                idade
+              </label>
+              <input
+                required
+                id="age-field"
+                type="number"
+                min="1"
+                max="150"
+                class="input-number-arrowless"
+              />
+            </div>
+          </div>
+
+          <div class="editor-content-section-line">
+            <div
+              class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+            >
+              <label
+                for="address-field"
+                class="ces-label-letterlized"
+              >
+                endereço
+              </label>
+              <input
+                required
+                id="address-field"
+                type="text"
+              />
+            </div>
+          </div>
+
+          <div class="editor-content-section-line">
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
+              <label
+                for="address-number-field"
+                class="ces-label-capittalized"
+              >
+                n°
+              </label>
+              <input
+                required
+                id="address-number-field"
+                type="text"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="address-completation-field"
+                class="ces-label-letterlized"
+              >
+                complemento
+              </label>
+              <input
+                id="address-completation-field"
+                type="text"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+            >
+              <label
+                for="address-city-field"
+                class="ces-label-letterlized"
+              >
+                cidade
+              </label>
+              <input
+                required
+                id="address-city-field"
+                type="text"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
+              <label
+                for="address-uf-field"
+                class="ces-label-capittalized"
+              >
+                uf
+              </label>
+              <input
+                required
+                id="address-uf-field"
+                type="text"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
+              <label
+                for="address-cep-field"
+                class="ces-label-capittalized"
+              >
+                cep
+              </label>
+              <input
+                required
+                id="address-cep-field"
+                type="text"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section
+          #pharmacy
+          class="editor-content-section"
+        >
+          <p>fármacos</p>
+
+          <div class="editor-content-section-line">
+            <textarea
+              cols="30"
+              rows="5"
+              placeholder="..."
+              class="ces-text-area ces-element-dimension-entirely"
+            ></textarea>
+          </div>
+        </section>
+
+        <section
+          #observation
+          class="editor-content-section"
+        >
+          <p>observações</p>
+
+          <div class="editor-content-section-line">
+            <textarea
+              id="observation-field"
+              cols="30"
+              rows="5"
+              placeholder="..."
+              class="ces-text-area ces-element-dimension-entirely"
+            ></textarea>
+          </div>
+        </section>
+      </form>
+    </main>
+  </div>
+</div>

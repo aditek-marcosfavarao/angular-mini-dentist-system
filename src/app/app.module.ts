@@ -9,6 +9,9 @@ import { LoginComponent } from './modules/login/login.component';
 import { AvatarComponent } from './core/components/avatar/avatar.component';
 import { ModalComponent } from './core/components/modal/modal.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,13 @@ import { ModalComponent } from './core/components/modal/modal.component';
     AvatarComponent,
     ModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

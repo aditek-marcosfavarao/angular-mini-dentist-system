@@ -1,1 +1,66 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-display">
+    <header class="login-header">
+      <h1>login</h1>
+      <h2>bem vindo ao nosso sistema!</h2>
+    </header>
+
+    <main class="login-content">
+      <form action="">
+        <div class="ces-forms-field">
+          <label
+            for="email-field"
+            class="ces-label-capittalized"
+            >e-mail</label
+          >
+          <input
+            id="email-field"
+            type="email"
+          />
+        </div>
+
+        <div class="ces-forms-field">
+          <label
+            for="password-field"
+            class="ces-label-capittalized"
+            >senha</label
+          >
+          <div>
+            <button
+              type="button"
+              (click)="handleChangePasswordVisibility()"
+              title="show password"
+            >
+              <img
+                [src]="iconImage"
+                alt=""
+              />
+            </button>
+
+            <input
+              id="password-field"
+              [type]="inputType"
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="ces-button ces-button-variant-primary"
+          (click)="handleLogin()"
+        >
+          <span>entrar</span>
+        </button>
+      </form>
+    </main>
+
+    <footer class="login-footer">
+      <a
+        href="https://aditek.com.br/"
+        target="_blank"
+      >
+        <span>política de uso</span>
+      </a>
+    </footer>
+  </div>
+</div>

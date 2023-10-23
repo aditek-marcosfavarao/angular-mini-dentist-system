@@ -1,0 +1,159 @@
+.editor-container {
+  background-color: var(--white);
+}
+
+.editor-display {
+  background-color: var(--white);
+  max-width: 70rem;
+  margin: 0 auto;
+  border: 1px solid var(--dark-300);
+  border-radius: 4px;
+  box-shadow: 0px 0px 8px 1px var(--dark-400);
+
+  @media (max-width: 720px) {
+    margin: auto 1rem;
+  }
+}
+
+.editor-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--dark-300);
+  overflow: hidden;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &::before {
+    content: '';
+    background-color: var(--green-500);
+    width: 16rem;
+    height: 16rem;
+    padding: 1rem;
+    rotate: 50deg;
+
+    position: absolute;
+    top: 0;
+    left: -12rem;
+  }
+}
+
+.editor-header-avatar {
+  background-color: var(--white);
+  width: 6rem;
+  height: 6rem;
+  padding: 1rem;
+  border: 0;
+  outline: 1px solid var(--green-500);
+  border-radius: 50%;
+  z-index: 1;
+
+  position: relative;
+
+  &::after {
+    content: 'm';
+    color: var(--green-500);
+
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+}
+
+.editor-header-info {
+  flex: 1;
+  height: 100%;
+
+  & h2 {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+  };
+
+  & h3 {
+    color: var(--green-500);
+
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
+  };
+
+  & time {
+    color: var(--dark-400);
+    display: block;
+
+    text-align: right;
+    text-transform: initial;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.6;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.editor-content {
+  background-color: var(--white);
+  padding: 1rem;
+}
+
+.editor-content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  & h2 {
+    text-transform: initial;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  };
+}
+
+.editor-content-section {
+  margin-top: 1rem;
+
+  & + & {
+    margin-top: 2rem;
+  }
+
+  & p {
+    border: 1px solid transparent;
+    border-bottom-color: var(--dark-200);
+
+    text-transform: initial;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  };
+}
+
+.editor-content-section-line {
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
