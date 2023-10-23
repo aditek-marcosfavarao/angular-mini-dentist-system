@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-type IconPath = {
-  eyeOpen: string;
-  eyeClose: string;
-};
+const ICON_PATH = {
+  eyeOpen: './assets/icon-eye.svg',
+  eyeClose: './assets/icon-eye-slash.svg',
+} as const;
+type IconPath = keyof typeof ICON_PATH;
 
 type Input = 'text' | 'password';
 
@@ -14,19 +15,17 @@ type Input = 'text' | 'password';
 })
 export class LoginComponent {
   showPassword = false;
-  iconPath: IconPath = {
-    eyeOpen: './assets/icon-eye.svg',
-    eyeClose: './assets/icon-eye-slash.svg',
-  };
-  iconImage = this.iconPath.eyeClose;
   inputType: Input = 'password';
+
+  iconPath: IconPath = 'eyeClose';
+  iconImage = ICON_PATH[this.iconPath];
 
   handleChangePasswordVisibility() {
     this.showPassword = !this.showPassword;
-    this.iconImage = this.showPassword
-      ? this.iconPath.eyeOpen
-      : this.iconPath.eyeClose;
     this.inputType = this.showPassword ? 'text' : 'password';
+
+    this.iconPath = this.showPassword ? 'eyeOpen' : 'eyeClose';
+    this.iconImage = ICON_PATH[this.iconPath];
   }
 
   handleLogin() {
