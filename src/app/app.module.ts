@@ -11,6 +11,7 @@ import { ModalComponent } from './core/components/modal/modal.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     AvatarComponent,
     ModalComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { DataServiceService } from './../../core/services/data-service.service';
 import { Component } from '@angular/core';
 import { Treatment } from 'src/app/core/@types/treatment';
 import { treatments } from 'src/app/data/treatment';
@@ -9,4 +10,7 @@ import { treatments } from 'src/app/data/treatment';
 })
 export class EditorComponent {
   treatments: Treatment[] = treatments;
+  constructor(private dataService: DataServiceService) {
+    console.log(this.dataService.getPaciente());
+  }
 }

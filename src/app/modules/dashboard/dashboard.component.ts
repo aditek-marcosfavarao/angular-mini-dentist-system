@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prettier/prettier */
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { Paciente } from 'src/app/core/@types/patient';
+import { DataServiceService } from 'src/app/core/services/data-service.service';
 
 type ProfileClass = 'pcenter' | 'pspace';
 
-interface Paciente {
-  id: number;
-  fullName: string;
-  firstName:string;
-  lastName:string;
-}
+
 export interface Profile {
   id: string;
   appointment: {
@@ -53,6 +51,8 @@ export class DashboardComponent {
   @ViewChild('widgetsContent', { read: ElementRef })
 
   public widgetsContent!: ElementRef<any>;
+
+  constructor(private dataService: DataServiceService, private router: Router){}
 
   public scrollRight(): void {
     this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
@@ -122,10 +122,11 @@ export class DashboardComponent {
     this.isModalVisible = false;
   };
 
-  // goToEditionPage() {
-  //   console.log('Direcionar pra tela edição');
-  //   this.router.navigate(['/editor:' + this.profile.nome]);
-  // }
+  goToEditionPage(paciente: Paciente) {
+    console.log('Direcionar pra tela edição');
+    this.dataService.setPaciente(paciente)
+    this.router.navigate(['editor']);
+  }
   onCloseModal() {
     this.isModalVisible = false;
   }

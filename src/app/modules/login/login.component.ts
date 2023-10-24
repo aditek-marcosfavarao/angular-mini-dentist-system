@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 const ICON_PATH = {
   eyeOpen: './assets/icon-eye.svg',
@@ -20,6 +21,8 @@ export class LoginComponent {
   iconPath: IconPath = 'eyeClose';
   iconImage = ICON_PATH[this.iconPath];
 
+  constructor(private router: Router) {}
+
   handleChangePasswordVisibility() {
     this.showPassword = !this.showPassword;
     this.inputType = this.showPassword ? 'text' : 'password';
@@ -30,5 +33,7 @@ export class LoginComponent {
 
   handleLogin() {
     console.log('login');
+    localStorage.setItem('id', JSON.stringify(0));
+    this.router.navigate(['']);
   }
 }
