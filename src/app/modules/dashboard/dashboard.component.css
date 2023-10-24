@@ -37,7 +37,7 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    margin: 5px 0px;
+    margin: 10px 0px;
 
     & button{
       background-color: transparent;

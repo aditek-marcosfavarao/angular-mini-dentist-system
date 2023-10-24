@@ -113,7 +113,8 @@
   </header>
   <app-modal
     *ngIf="isModalVisible"
-    (modalEvent)="onCloseModal()"
+    (modalCustomEvent)="onDeletePatient()"
+    (modalEventClose)="onCloseModal()"
     customButtonName="Confirmar"
     customButtonColor="danger"
     customButtonTitle="Ação necessária"
