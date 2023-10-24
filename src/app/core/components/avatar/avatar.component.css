@@ -40,7 +40,7 @@
     line-height: 1.6;
   }
   @media (max-width: 480px) {
-    .avatar-large{
+
       background-color: var(--dark-300);
       width: 7rem;
       height: 7rem;
@@ -62,7 +62,7 @@
         font-weight: 700;
         line-height: 1.6;
       }
-    }
+
   }
 }
 

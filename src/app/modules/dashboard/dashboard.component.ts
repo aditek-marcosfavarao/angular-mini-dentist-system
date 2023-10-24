@@ -6,7 +6,9 @@ type ProfileClass = 'pcenter' | 'pspace';
 
 interface Paciente {
   id: number;
-  nome: string;
+  fullName: string;
+  firstName:string;
+  lastName:string;
 }
 export interface Profile {
   id: string;
@@ -61,29 +63,22 @@ export class DashboardComponent {
   }
 
   profilesList: Paciente[] = [
-    { id: 1, nome: 'Ana Berigo' },
-    { id: 1, nome: 'Marcos Fanfarrão' },
-    { id: 1, nome: 'aabba dasads' },
+    { id: 1, fullName: 'Ana Paula Berigo e Silva', lastName: 'Silva', firstName:'Ana' },
+    { id: 2, fullName: 'Marcos Fanfarrão', lastName: 'Fanfarrão', firstName:'Marcos' },
+    { id: 3, fullName: 'Ricardo Salles dos Santos', lastName: 'Santos', firstName:'Ricardo' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
 
-    { id: 1, nome: 'Ana Berigo' },
-    { id: 1, nome: 'Marcos Fanfarrão' },
-    { id: 1, nome: 'aabba dasads' },
-
-    { id: 1, nome: 'Ana Berigo' },
-    { id: 1, nome: 'Marcos Fanfarrão' },
-    { id: 1, nome: 'aabba dasads' },
-
-    { id: 1, nome: 'Ana Berigo' },
-    { id: 1, nome: 'Marcos Fanfarrão' },
-    { id: 1, nome: 'aabba dasads' },
-
-    { id: 1, nome: 'Ana Berigo' },
-    { id: 1, nome: 'Marcos Fanfarrão' },
-    { id: 1, nome: 'aabba dasads' },
-
-    { id: 1, nome: 'Ana Berigo' },
-    { id: 1, nome: 'Marcos Fanfarrão' },
-    { id: 1, nome: 'aabba dasads' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
+    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
   ];
 
   navbarElementsCapacity = 10;
@@ -96,12 +91,13 @@ export class DashboardComponent {
     this.profilesList.length >= 10 ? 'pspace' : 'pcenter';
 
   avatarLetter = this.isProfileSelected
-    ? this.getProfileNameLetter(this.profile.nome)
+    ? this.getProfileNameLetter(this.profile.firstName)
     : '';
 
   handleOpenModal() {
     this.isModalVisible = true;
   }
+
   handleSelectProfile(_profile: Paciente) {
     this.profile = _profile;
     this.isProfileSelected = true;
