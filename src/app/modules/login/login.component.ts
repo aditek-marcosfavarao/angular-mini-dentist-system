@@ -34,6 +34,6 @@ export class LoginComponent {
   handleLogin() {
     console.log('login');
     localStorage.setItem('id', JSON.stringify(0));
-    this.router.navigate(['']);
+    this.router.navigate(['dashboard']);
   }
 }

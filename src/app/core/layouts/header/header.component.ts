@@ -16,7 +16,7 @@ export class HeaderComponent {
   };
   constructor(private router: Router) {}
   goToDashboardPage() {
-    this.router.navigate(['']);
+    this.router.navigate(['dashboard']);
   }
   handleOpenModal() {
     this.isModalVisible = true;
