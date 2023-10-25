@@ -7,29 +7,37 @@
 
     <main class="login-content">
       <form action="">
-        <div class="ces-forms-field">
+        <div
+          class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+        >
           <label
             for="email-field"
-            class="ces-label-capittalized"
-            >e-mail</label
+            class="ces-label ces-label-capittalized"
           >
+            e-mail
+          </label>
           <input
             id="email-field"
             type="email"
+            class="ces-input"
           />
         </div>
 
-        <div class="ces-forms-field">
+        <div
+          class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+        >
           <label
             for="password-field"
-            class="ces-label-capittalized"
-            >senha</label
+            class="ces-label ces-label-capittalized"
           >
-          <div>
+            senha
+          </label>
+          <div class="ces-input-icon">
             <button
               type="button"
-              (click)="handleChangePasswordVisibility()"
               title="show password"
+              class="ces-button-icon ces-button-variant-primary"
+              (click)="handleChangePasswordVisibility()"
             >
               <img
                 [src]="iconImage"
@@ -39,6 +47,7 @@
 
             <input
               id="password-field"
+              class="ces-input"
               [type]="inputType"
             />
           </div>
@@ -49,7 +58,7 @@
           class="ces-button ces-button-variant-primary"
           (click)="handleLogin()"
         >
-          <span>entrar</span>
+          entrar
         </button>
       </form>
     </main>
@@ -59,7 +68,7 @@
         href="https://aditek.com.br/"
         target="_blank"
       >
-        <span>política de uso</span>
+        política de uso
       </a>
     </footer>
   </div>

@@ -1,5 +1,6 @@
 .editor-container {
   background-color: var(--white);
+  margin: 1rem 0;
 }
 
 .editor-display {
@@ -8,7 +9,9 @@
   margin: 0 auto;
   border: 1px solid var(--dark-300);
   border-radius: 4px;
-  box-shadow: 0px 0px 8px 1px var(--dark-400);
+  box-shadow: 0px 0px 8px 1px var(--dark-300);
+  overflow: hidden;
+
 
   @media (max-width: 720px) {
     margin: auto 1rem;
@@ -60,7 +63,7 @@
     text-transform: uppercase;
     font-size: 1.5rem;
     font-weight: 700;
-    line-height: 1.6;
+    line-height: 1.75;
 
     position: absolute;
     top: 50%;
@@ -77,7 +80,7 @@
     text-transform: capitalize;
     font-size: 1.5rem;
     font-weight: 700;
-    line-height: 1.6;
+    line-height: 1.75;
   };
 
   & h3 {
@@ -86,18 +89,17 @@
     text-transform: capitalize;
     font-size: 1rem;
     font-weight: 700;
-    line-height: 1.6;
+    line-height: 1.75;
   };
 
-  & time {
+  & p {
     color: var(--dark-400);
-    display: block;
 
     text-align: right;
     text-transform: initial;
     font-size: 0.875rem;
     font-weight: 500;
-    line-height: 1.6;
+    line-height: 1.75;
 
     &::first-letter {
       text-transform: uppercase;
@@ -117,10 +119,11 @@
   gap: 1rem;
 
   & h2 {
+    flex: 1;
     text-transform: initial;
     font-size: 1.5rem;
     font-weight: 700;
-    line-height: 1.6;
+    line-height: 1.75;
 
     &::first-letter {
       text-transform: uppercase;
@@ -142,7 +145,7 @@
     text-transform: initial;
     font-size: 1rem;
     font-weight: 700;
-    line-height: 1.6;
+    line-height: 1.75;
 
     &::first-letter {
       text-transform: uppercase;
@@ -154,6 +157,6 @@
   margin: 1rem auto;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }

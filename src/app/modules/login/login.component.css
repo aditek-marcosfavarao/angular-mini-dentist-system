@@ -46,16 +46,16 @@
     text-transform: uppercase;
     font-size: 2rem;
     font-weight: bold;
-    line-height: 1.6;
+    line-height: 1.75;
   };
 
   & h2 {
     color: var(--dark-400);
     font-size: 1rem;
     font-weight: 600;
-    line-height: 1.6;
+    line-height: 1.75;
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.75;
 
     &::first-letter {
       text-transform: uppercase;
@@ -80,38 +80,27 @@
 
 .login-footer {
   & a {
-    width: 100%;
+    width: fit-content;
     color: var(--dark-400);
+    margin: 0 auto;
+    padding: 0.5rem;
+    outline: 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
     display: block;
-    outline: none;
 
     text-align: center;
     text-transform: initial;
     font-size: 0.875rem;
     font-weight: 600;
-    line-height: 1.6;
-
-    & span {
-      text-decoration: underline;
-      text-underline-position: under;
-      text-decoration-color: transparent;
-
-      &:hover {
-        text-decoration-color: currentColor;
-      }
-    }
+    line-height: 1.75;
 
     &::first-letter {
       text-transform: capitalize;
     }
 
-    &:focus-within {
-      & span {
-        padding: 0.5rem 1rem;
-        border-radius: 2px;
-        outline: 1px solid var(--green-500);
-        text-decoration-color: var(--green-500);
-      }
+    &:focus {
+      border-color: var(--green-500);
     }
   }
 }

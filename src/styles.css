@@ -8,8 +8,8 @@
 
   --dark-100: #f8f8f8; /* background */
   --dark-200: #f0f0f0; /* border */
-  --dark-300: #d9d9d9; /* line */
-  --dark-400: #c7c7c7; /* shadow */
+  --dark-300: #e3e3e3; /* shadow - line */
+  --dark-400: #c7c7c7; /* text-ligth */
   --dark-500: #3f3f3f; /* text */
 }
 

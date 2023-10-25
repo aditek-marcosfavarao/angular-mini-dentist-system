@@ -2,113 +2,115 @@
 .ces-button {
   background-color: transparent;
   color: var(--white);
-  width: 100%;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: 1px solid transparent;
   border-radius: 4px;
-  outline: 1px solid transparent;
-  transition: all 250ms;
+  outline: 0;
+  transition: filter 250ms;
 
   text-align: center;
   text-transform: uppercase;
   font-size: 0.875rem;
   font-weight: 600;
-  line-height: 1.6;
+  line-height: 1.75;
 
-  &:hover {
-    filter: brightness(1.1);
+  &:focus {
+    border-color: var(--green-500);
   }
 
-  &:focus-within {
-    outline-color: var(--green-500);
-
-    & span {
-      text-decoration-color: currentColor;
-    }
+  &:hover, &:focus {
+    filter: brightness(1.05);
   }
+}
 
-  & span {
-    text-decoration: underline;
-    text-underline-position: under;
-    text-decoration-color: transparent;
+.ces-button-icon {
+  background-color: transparent;
+  color: var(--white);
+  margin: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  outline: 0;
+  line-height: 0;
+  transition: filter 250ms;
+
+  &:hover, &:focus {
+    filter: brightness(1.05);
   }
 }
 
 .ces-button-variant-neutral {
-  background-color: var(--dark-400);
+  background-color: var(--dark-300);
+
+  &:focus {
+    border-color: var(--dark-400);
+  }
 }
 
 .ces-button-variant-primary {
   background-color: var(--green-500);
+
+  &:focus {
+    border-color: var(--dark-300);
+  }
 }
 
 .ces-button-variant-danger {
   background-color: var(--danger-500);
+
+  &:focus {
+    border-color: var(--green-500);
+  }
 }
 
-/* input */
+/* form-field */
 .ces-forms-field {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+}
+
+/* input */
+.ces-input {
+  background-color: var(--dark-100);
+  width: 100%;
+  color: var(--dark-500);
+  padding: 0.6rem;
+  border: 1px solid var(--dark-200);
+  border-radius: 4px;
+  outline: 0;
+
+  &:focus {
+    border-color: var(--green-500);
+  }
+}
+
+.ces-input-icon {
+  background-image: linear-gradient(to right, var(--green-500) 50%, transparent 50%);
+  border: 1px solid var(--dark-200);
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
 
   &:focus-within {
-    & input, & div {
-      outline-color: var(--green-500);
-    }
-  };
-
-  & label {
-    width: fit-content;
-    /* text-transform: uppercase; */
-    font-size: 0.875rem;
-    font-weight: 700;
-    line-height: 1.6;
+    border-color: var(--green-500);
   }
 
   & input {
-    background-color: var(--dark-100);
-    width: 100%;
-    height: 100%;
-    color: var(--dark-500);
-    padding: 0.75rem 0.5rem;
-    border: 0;
-    border-radius: 4px;
-    outline: 1px solid var(--dark-200);
-  }
+    border-radius: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-color: transparent;
 
-  & div {
-    background-image: linear-gradient(to right, var(--green-500) , transparent);
-    border: 0;
-    border-radius: 4px;
-    overflow: hidden;
-    outline: 1px solid var(--dark-200);
-
-    display: flex;
-    align-items: center;
-
-    & input {
-      border-radius: 0;
+    &:focus {
       border-color: transparent;
-    }
-
-    & button {
-      background-color: transparent;
-      margin: 0 0.25rem;
-      padding: 0.25rem;
-      border: 0;
-      border-radius: 2px;
-      line-height: 0;
-      outline: 1px solid transparent;
-
-      &:focus {
-        outline-color: var(--white);
-      }
     }
   }
 }
 
-.input-number-arrowless {
+.ces-input-number-arrowless {
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -118,6 +120,17 @@
 }
 
 /* label */
+.ces-label {
+  width: fit-content;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.ces-label-dafaultlized {
+  text-transform: initial;
+}
+
 .ces-label-capittalized {
   text-transform: uppercase;
 }
@@ -149,6 +162,23 @@
   }
 }
 
+/* text color */
+.ces-text-variant-transparent {
+  color: transparent;
+}
+
+.ces-text-variant-neutral {
+  color: var(--dark-300);
+}
+
+.ces-text-variant-primary {
+  color: var(--green-500);
+}
+
+.ces-text-variant-danger {
+  color: var(--danger-500);
+}
+
 /* dimension */
 .ces-element-dimension-fit-content {
   width: fit-content;
@@ -158,16 +188,16 @@
   width: 4rem;
 }
 
-.ces-element-dimension-average {
+.ces-element-dimension-small {
   width: 8rem;
+}
+
+.ces-element-dimension-average {
+  width: 12rem;
 }
 
 .ces-element-dimension-large {
   width: 16rem;
-}
-
-.ces-element-dimension-large-x {
-  width: 24rem;
 }
 
 .ces-element-dimension-entirely {
