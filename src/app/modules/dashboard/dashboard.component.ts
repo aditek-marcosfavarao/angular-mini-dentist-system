@@ -27,6 +27,7 @@ export class DashboardComponent {
   profilesList: Profile[] = [
     {
       id: '00',
+      lastProfileEdition: new Date(),
       lastAppointment: new Date('01/12/1899 00:00'),
       nextAppointment: new Date(),
       treatmentType: 'Completo',
@@ -52,6 +53,7 @@ export class DashboardComponent {
     },
     {
       id: '01',
+      lastProfileEdition: new Date(),
       lastAppointment: new Date('10/11/1909 00:00'),
       nextAppointment: new Date(),
       treatmentType: 'Print 3D',
@@ -77,6 +79,7 @@ export class DashboardComponent {
     },
     {
       id: '02',
+      lastProfileEdition: new Date(),
       lastAppointment: new Date('10/11/1909 00:00'),
       nextAppointment: new Date(),
       treatmentType: 'Print 3D',
@@ -102,6 +105,7 @@ export class DashboardComponent {
     },
     {
       id: '03',
+      lastProfileEdition: new Date(),
       lastAppointment: new Date('10/11/1909 00:00'),
       nextAppointment: new Date(),
       treatmentType: 'Completo',
