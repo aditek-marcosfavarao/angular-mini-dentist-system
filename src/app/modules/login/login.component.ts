@@ -1,3 +1,4 @@
+import { FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -15,13 +16,23 @@ type Input = 'text' | 'password';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
+
   showPassword = false;
   inputType: Input = 'password';
 
+  loginForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+  });
+
+  fieldControl = this.loginForm.controls;
+
   iconPath: IconPath = 'eyeClose';
   iconImage = ICON_PATH[this.iconPath];
-
-  constructor(private router: Router) {}
 
   handleChangePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -32,8 +43,8 @@ export class LoginComponent {
   }
 
   handleLogin() {
-    console.log('login');
-    localStorage.setItem('id', JSON.stringify(0));
+    if (!this.loginForm.valid) return;
+    // localStorage.setItem('id', JSON.stringify(0));
     this.router.navigate(['dashboard']);
   }
 }
