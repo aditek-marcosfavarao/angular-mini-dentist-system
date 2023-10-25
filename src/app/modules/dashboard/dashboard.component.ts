@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Component,
   ElementRef,
@@ -21,8 +20,8 @@ type ProfileClass = 'pcenter' | 'pspace';
 export class DashboardComponent {
   @Output() newItemEvent = new EventEmitter<Paciente>();
 
-  @ViewChild('widgetsContent', { read: ElementRef })
-  public widgetsContent!: ElementRef<any>;
+  @ViewChild('widgetsContent')
+  widgetsContent = {} as ElementRef<HTMLDivElement>;
 
   profilesList: Profile[] = [
     {
