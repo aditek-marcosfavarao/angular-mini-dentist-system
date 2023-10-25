@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,16 @@ import { LoginComponent } from './modules/login/login.component';
 import { AvatarComponent } from './core/components/avatar/avatar.component';
 import { ModalComponent } from './core/components/modal/modal.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
+import { HeaderComponent } from './core/layouts/header/header.component';
+
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+import { DefaultLayoutComponent } from './modules/default-layout/default-layout.component';
+registerLocaleData(localePT);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +32,9 @@ import { ModalComponent } from './core/components/modal/modal.component';
     LoginComponent,
     AvatarComponent,
     ModalComponent,
+    PageNotFoundComponent,
+    HeaderComponent,
+    DefaultLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +44,7 @@ import { ModalComponent } from './core/components/modal/modal.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

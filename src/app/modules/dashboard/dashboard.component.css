@@ -9,11 +9,20 @@
       justify-content: center;
       background-color: var(--green-200);
       border-bottom: 2px solid var(--green-200);
+      min-height: 7rem;
+      & button{
+        background-color: transparent;
+        line-height: 0;
+        border: 0;
+      }
+      & img {
+        width: 35px;
+      }
     }
 }
 
-.userAligment{
-
+.user-aligment{
+  padding: 0 1rem;
   flex: 1;
   margin: 0 1rem;
   display: flex;
@@ -24,14 +33,25 @@
     display: none;
   }
 
-  & .iconPatient{
+  & .icon-patient{
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    margin: 5px 0px;
+    margin: 10px 0px;
 
-    & .namePatient{
+    & button{
+      background-color: transparent;
+      border: 0;
+      line-height: 0;
+      outline: 2px solid transparent;
+      border-radius: 50%;
+
+      &:hover{
+        outline-color: var(--dark-300);
+      }
+    }
+    & .name-patient{
       width: 6rem;
       text-align: center;
       margin: 5px 0px;
@@ -104,18 +124,28 @@
     gap: 7rem;
   }
 
-  & svg{
-    cursor: pointer;
-    z-index: 1;
-
+  & .icons{
     position: absolute;
     top: 1rem;
     right: 1rem;
+    z-index: 1;
+
+    & button{
+      background-color: transparent;
+      border: 0;
+      line-height: 0;
+
+      &:hover{
+        scale: 1.1;
+      }
+    }
+
+    & .icon-edit-card img{
+      margin-right: 1.2rem;
+    }
   }
 
-  & .iconEditCard svg{
-    margin-right: 3rem;
-  }
+
 
 
   @media(max-width: 480px){
@@ -151,48 +181,24 @@
       }
     }
 
-    /* & .icons {
-      justify-content: space-evenly;
+    & .icons {
+      position: relative;
+      justify-content: center;
       display: flex;
       align-items: center;
-      gap: 2rem;
-      margin-bottom: 1rem;
-    } */
-    /* .dashboard-container header .icons {
-    justify-content: space-evenly;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-  } */
-  /* .dashboard-container header .icons .iconDeletCard {
-    z-index: 1;
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 3rem;
-    height: 3rem;
-    cursor: pointer;
-  } */
-  /* .dashboard-container header .icons .iconDeletCard svg{
-    width: 3rem;
-    height: 3rem;
-  } */
-  /* .dashboard-container header .icons .iconEditCard {
-    z-index: 1;
-    position: relative;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    margin: 0;
-    width: 3rem;
-    height: 3rem;
-  } */
-  /* .dashboard-container header .icons .iconEditCard svg{
-    margin: 0;
-    width: 3rem;
-    height: 3rem;
-  } */
+      gap: 6rem;
+      margin: 1.5rem 0;
+      top: 0;
+      right: 0;
+
+      & .icon-edit-card img{
+          margin: 0;
+      }
+
+      & img{
+        width: 35px;
+      }
+    }
   }
 }
 
@@ -202,4 +208,8 @@
 
 .pcenter {
   justify-content: center;
+}
+.highlighted-text{
+  color: var(--danger-500);
+  font-weight:  800;
 }

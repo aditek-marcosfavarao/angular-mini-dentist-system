@@ -1,4 +1,6 @@
+import { FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 const ICON_PATH = {
   eyeOpen: './assets/icon-eye.svg',
@@ -14,8 +16,20 @@ type Input = 'text' | 'password';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
+
   showPassword = false;
   inputType: Input = 'password';
+
+  loginForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+  });
+
+  fieldControl = this.loginForm.controls;
 
   iconPath: IconPath = 'eyeClose';
   iconImage = ICON_PATH[this.iconPath];
@@ -29,6 +43,8 @@ export class LoginComponent {
   }
 
   handleLogin() {
-    console.log('login');
+    if (!this.loginForm.valid) return;
+    // localStorage.setItem('id', JSON.stringify(0));
+    this.router.navigate(['dashboard']);
   }
 }

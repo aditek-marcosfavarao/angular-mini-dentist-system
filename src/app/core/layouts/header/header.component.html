@@ -1,0 +1,47 @@
+<div class="header-container">
+  <button
+    type="button"
+    (click)="goToDashboardPage()"
+  >
+    <img
+      class="logo-clinic"
+      src="../../../../assets/logo-clinic.svg"
+      alt=""
+    />
+  </button>
+  <div class="header-content">
+    <div class="header-login-info">
+      <h1>Bem vindo(a) Marcos!</h1>
+      <time
+        [dateTime]="lastLogin | date: dateFormatted.simple"
+        [title]="'Último acesso: ' + (lastLogin | date: dateFormatted.complete)"
+      >
+        Última acesso: {{ lastLogin | date: dateFormatted.simple }}
+      </time>
+    </div>
+    <button
+      type="button"
+      (click)="handleOpenModal()"
+    >
+      <img
+        src="../../../../assets/exit-to-app.svg"
+        alt="Botão sair"
+      />
+    </button>
+    <app-modal
+      *ngIf="isModalVisible"
+      (modalCustomEvent)="onLogoutUser()"
+      (modalEventClose)="onCloseModal()"
+      customButtonName="Confirmar"
+      customButtonColor="primary"
+      customButtonTitle="Ação necessária"
+    >
+      <div>
+        <p>
+          Ao confirmar, você será redirecionado à página de login. Deseja
+          continuar?
+        </p>
+      </div>
+    </app-modal>
+  </div>
+</div>

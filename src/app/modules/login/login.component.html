@@ -6,20 +6,40 @@
     </header>
 
     <main class="login-content">
-      <form action="">
+      <form
+        (ngSubmit)="handleLogin()"
+        action=""
+        [formGroup]="loginForm"
+      >
         <div
           class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
         >
           <label
-            for="email-field"
-            class="ces-label ces-label-capittalized"
+            for="treatment-type-field"
+            class="ces-label ces-label-letterlized"
           >
             e-mail
+
+            <span
+              *ngIf="fieldControl.email?.hasError('required')"
+              class="ces-text-variant-danger"
+            >
+              *requerido
+            </span>
+            <span
+              *ngIf="fieldControl.email?.hasError('email')"
+              class="ces-text-variant-danger"
+            >
+              *insira um email válido
+            </span>
           </label>
+
           <input
-            id="email-field"
+            required
+            id="treatment-type-field"
             type="email"
             class="ces-input"
+            formControlName="email"
           />
         </div>
 
@@ -28,11 +48,18 @@
         >
           <label
             for="password-field"
-            class="ces-label ces-label-capittalized"
+            class="ces-label ces-label-letterlized"
           >
             senha
+
+            <span
+              *ngIf="fieldControl.password?.hasError('required')"
+              class="ces-text-variant-danger"
+            >
+              *requerido
+            </span>
           </label>
-          <div class="ces-input-icon">
+          <div>
             <button
               type="button"
               title="show password"
@@ -46,9 +73,12 @@
             </button>
 
             <input
+              required
               id="password-field"
               class="ces-input"
               [type]="inputType"
+              name="password"
+              formControlName="password"
             />
           </div>
         </div>
@@ -56,7 +86,6 @@
         <button
           type="submit"
           class="ces-button ces-button-variant-primary"
-          (click)="handleLogin()"
         >
           entrar
         </button>
