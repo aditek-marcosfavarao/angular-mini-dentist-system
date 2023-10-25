@@ -23,7 +23,9 @@
 
           <button
             type="button"
+            title="voltar a página anterior"
             class="ces-button-icon ces-button-variant-neutral"
+            (click)="handleBackToPage()"
           >
             <!-- tabindex="-1" - previne elemento de ser focado -->
             <img
@@ -307,12 +309,6 @@
                   *deve conter 09 dígitos
                 </span>
                 <span
-                  *ngIf="fieldControl.rg?.hasError('maxlength')"
-                  class="ces-label-dafaultlized ces-text-variant-danger"
-                >
-                  *deve conter menos que 11 digitos
-                </span>
-                <span
                   *ngIf="fieldControl.rg?.hasError('pattern')"
                   class="ces-label-dafaultlized ces-text-variant-danger"
                 >
@@ -324,8 +320,8 @@
                 required
                 id="rg-field"
                 type="text"
-                maxlength="11"
-                minlength="11"
+                maxlength="9"
+                minlength="9"
                 class="ces-input"
                 formControlName="rg"
               />

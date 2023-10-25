@@ -7,7 +7,7 @@
 
     <main class="login-content">
       <form
-        (ngSubmit)="handleLogin()"
+        (ngSubmit)="onFormSubmit()"
         action=""
         [formGroup]="loginForm"
       >
@@ -20,26 +20,31 @@
           >
             e-mail
 
-            <span
-              *ngIf="fieldControl.email?.hasError('required')"
-              class="ces-text-variant-danger"
-            >
-              *requerido
-            </span>
-            <span
-              *ngIf="fieldControl.email?.hasError('email')"
-              class="ces-text-variant-danger"
-            >
-              *insira um email válido
-            </span>
+            <ng-container *ngIf="elementTouched.inputEmail">
+              <span
+                *ngIf="fieldControl.email?.hasError('required')"
+                class="ces-text-variant-danger"
+              >
+                *requerido
+              </span>
+              <span
+                *ngIf="fieldControl.email?.hasError('email')"
+                class="ces-text-variant-danger"
+              >
+                *insira um email válido
+              </span>
+            </ng-container>
           </label>
 
           <input
+            #inputLoginRef
             required
-            id="treatment-type-field"
+            id="email-field"
+            name="email-field"
             type="email"
             class="ces-input"
             formControlName="email"
+            (blur)="onInputBlur(inputLoginRef, 'inputEmail')"
           />
         </div>
 
@@ -52,14 +57,17 @@
           >
             senha
 
-            <span
-              *ngIf="fieldControl.password?.hasError('required')"
-              class="ces-text-variant-danger"
-            >
-              *requerido
-            </span>
+            <ng-container *ngIf="elementTouched.inputPassword">
+              <span
+                *ngIf="fieldControl.password?.hasError('required')"
+                class="ces-text-variant-danger"
+              >
+                *requerido
+              </span>
+            </ng-container>
           </label>
-          <div>
+
+          <div class="ces-input-icon">
             <button
               type="button"
               title="show password"
@@ -73,11 +81,13 @@
             </button>
 
             <input
+              #inputPasswordRef
               required
               id="password-field"
-              class="ces-input"
+              name="password-field"
               [type]="inputType"
-              name="password"
+              class="ces-input"
+              (blur)="onInputBlur(inputPasswordRef, 'inputPassword')"
               formControlName="password"
             />
           </div>

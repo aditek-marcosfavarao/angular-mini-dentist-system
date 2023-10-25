@@ -1,5 +1,5 @@
-import { DataServiceService } from './../../core/services/data-service.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { State } from 'src/app/core/@types/state';
@@ -14,7 +14,10 @@ import { treatments } from 'src/app/data/treatment';
   styleUrls: ['./editor.component.css'],
 })
 export class EditorComponent {
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
   readonly dateFormat = {
     simple: "dd'/'MM'/'yyyy",
@@ -58,7 +61,6 @@ export class EditorComponent {
       [
         Validators.required,
         Validators.minLength(9),
-        Validators.maxLength(9),
         Validators.pattern('^[0-9]*$'),
       ],
     ],
@@ -127,5 +129,9 @@ export class EditorComponent {
   onDisableFormFields() {
     this.isFormFieldsDisabled = true;
     this.profileForm.disable();
+  }
+
+  handleBackToPage() {
+    this.router.navigate(['dashboard']);
   }
 }

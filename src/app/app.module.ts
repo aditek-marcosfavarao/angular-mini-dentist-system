@@ -14,8 +14,6 @@ import { LoginComponent } from './modules/login/login.component';
 import { AvatarComponent } from './core/components/avatar/avatar.component';
 import { ModalComponent } from './core/components/modal/modal.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 import { HeaderComponent } from './core/layouts/header/header.component';
 

@@ -1,6 +1,6 @@
-import { FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 const ICON_PATH = {
   eyeOpen: './assets/icon-eye.svg',
@@ -21,18 +21,45 @@ export class LoginComponent {
     private formBuilder: FormBuilder
   ) {}
 
+  @ViewChild('inputLoginRef')
+  inputRef = {} as ElementRef<HTMLInputElement>;
+
   showPassword = false;
   inputType: Input = 'password';
+  iconPath: IconPath = 'eyeClose';
+  iconImage = ICON_PATH[this.iconPath];
+
+  elementTouched = {
+    inputEmail: false,
+    inputPassword: false,
+  };
 
   loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
-
   fieldControl = this.loginForm.controls;
 
-  iconPath: IconPath = 'eyeClose';
-  iconImage = ICON_PATH[this.iconPath];
+  onFormSubmit() {
+    if (!this.loginForm.valid) {
+      this.elementTouched.inputEmail = true;
+      this.elementTouched.inputPassword = true;
+      return;
+    }
+
+    // // localStorage.setItem('id', JSON.stringify(0));
+    this.router.navigate(['dashboard']);
+  }
+
+  onInputBlur(
+    blurElement: HTMLInputElement,
+    inputName: keyof typeof this.elementTouched
+  ) {
+    console.log(blurElement.className);
+
+    const hasInputBeenTouched = blurElement.className.includes('ng-dirty');
+    this.elementTouched[inputName] = hasInputBeenTouched;
+  }
 
   handleChangePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -40,11 +67,5 @@ export class LoginComponent {
 
     this.iconPath = this.showPassword ? 'eyeOpen' : 'eyeClose';
     this.iconImage = ICON_PATH[this.iconPath];
-  }
-
-  handleLogin() {
-    if (!this.loginForm.valid) return;
-    // localStorage.setItem('id', JSON.stringify(0));
-    this.router.navigate(['dashboard']);
   }
 }
