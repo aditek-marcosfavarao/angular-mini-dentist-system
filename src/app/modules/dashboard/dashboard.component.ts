@@ -100,14 +100,18 @@ export class DashboardComponent {
     return name.substring(0, 1);
   }
   onDeletePatient = () => {
-    // const profileList = this.profilesList;
-    // const currentProfile = this.profile;
-    // const deletedUser = profileList.filter(
-    //   (profile) => profile.id !== currentProfile.id
-    // );
-    // this.profilesList = deletedUser;
-    // this.profile = {} as Paciente;
-    // this.isModalVisible = false;
+    const profileList = this.profilesList;
+    const currentProfile = this.profile;
+    const deletedUser = profileList.filter(
+      (profile) => profile.id !== currentProfile.id
+    );
+    this.profilesList = deletedUser;
+    this.profile = {} as Paciente;
+    this.isModalVisible = false;
+    this.isProfileSelected = false;
+    this.isDataEmpty = !this.profilesList.length
+    console.log(this.isDataEmpty);
+
   };
 
   goToEditionPage(paciente: Paciente) {
