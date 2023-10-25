@@ -9,6 +9,7 @@
       justify-content: center;
       background-color: var(--green-200);
       border-bottom: 2px solid var(--green-200);
+      min-height: 7rem;
       & button{
         background-color: transparent;
         line-height: 0;

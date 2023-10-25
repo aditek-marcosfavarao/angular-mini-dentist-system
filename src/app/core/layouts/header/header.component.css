@@ -30,18 +30,18 @@
   & .header-login-info{
     color: var(--white);
 
-  & h1 {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    text-align: right;
-  }
+    & h1 {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      text-align: right;
+    }
 
-  & time {
-    display: block;
-    font-size: 0.75rem;
-    line-height: 1.6;
-    text-align: right;
-  }
+    & time {
+      display: block;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      text-align: right;
+    }
   }
 
 }

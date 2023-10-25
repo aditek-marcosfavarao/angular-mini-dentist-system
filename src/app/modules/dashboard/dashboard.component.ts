@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Paciente } from 'src/app/core/@types/patient';
+import { Paciente } from 'src/app/core/@types/paciente';
 import { DataServiceService } from 'src/app/core/services/data-service.service';
 
 type ProfileClass = 'pcenter' | 'pspace';
@@ -66,18 +66,6 @@ export class DashboardComponent {
     { id: 1, fullName: 'Ana Paula Berigo e Silva', lastName: 'Silva', firstName:'Ana' },
     { id: 2, fullName: 'Marcos Fanfarrão', lastName: 'Fanfarrão', firstName:'Marcos' },
     { id: 3, fullName: 'Ricardo Salles dos Santos', lastName: 'Santos', firstName:'Ricardo' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
-    { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
     { id: 4, fullName: 'Luiz Carlos Lopez da Silva', lastName: 'Silva', firstName:'Luiz' },
   ];
 

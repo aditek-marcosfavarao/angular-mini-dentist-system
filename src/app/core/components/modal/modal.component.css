@@ -9,56 +9,58 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-}
-.popup-wrapper .popup {
-  /* margin: 1rem; */
-  padding: 1.25rem;
-  background: #ffffff;
-  position: relative;
-  border-radius: 5px;
-  max-width: 90%;
-}
-.popup-wrapper .popup h2 {
-  text-align: start;
-  line-height: 1.6;
-}
-.popup-wrapper .popup .content {
-  border: solid 2px var(--dark-200);
-  padding: 0.5rem;
-  min-height: 40vh;
-  min-width: 40vw;
-  max-width: 60rem;
-  max-height: 60vh;
-  overflow-y: auto;
-  margin-bottom: 0.5rem;
-}
-.popup-wrapper .popup .buttons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.6rem;
-}
-.popup-wrapper .popup .buttonCancel {
-  border: none;
-  border-radius: 5px;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 6px 10px;
-  text-decoration: none;
-  background: var(--dark-400);
-}
-.popup-wrapper .popup .customButton{
-  border: none;
-  border-radius: 5px;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 6px 10px;
-  text-decoration: none;
-  background-color: var(--danger-500);
-}
 
-@media (max-width: 480px) {
-  .popup-wrapper .popup {
-    width: 90%;
+    & .popup {
+    padding: 1.25rem;
+    background: #ffffff;
+    position: relative;
+    border-radius: 5px;
+    max-width: 90%;
+
+      & h2 {
+        text-align: start;
+        line-height: 1.6;
+      }
+      & .content {
+        border: solid 2px var(--dark-200);
+        padding: 0.5rem;
+        min-height: 40vh;
+        min-width: 40vw;
+        max-width: 60rem;
+        max-height: 60vh;
+        overflow-y: auto;
+        margin-bottom: 0.5rem;
+      }
+      & .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.6rem;
+      }
+      & .buttonCancel {
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 6px 10px;
+        text-decoration: none;
+        background: var(--dark-400);
+      }
+      & .customButton{
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 6px 10px;
+        text-decoration: none;
+        background-color: var(--danger-500);
+      }
+
+      @media (max-width: 480px) {
+          width: 90%;
+      }
   }
 }
+
+
+
 
