@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { EditorComponent } from './modules/editor/editor.component';
@@ -17,6 +18,7 @@ import { HeaderComponent } from './core/layouts/header/header.component';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
 import { DefaultLayoutComponent } from './modules/default-layout/default-layout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 registerLocaleData(localePT);
 
 @NgModule({
