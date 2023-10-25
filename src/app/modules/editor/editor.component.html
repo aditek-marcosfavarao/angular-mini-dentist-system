@@ -5,15 +5,45 @@
       <div class="editor-header-info">
         <h2>marcos adriano lorencini favarão</h2>
         <h3>tratamento completo</h3>
-        <time>última edição: 01/01/0000</time>
+        <p>
+          última edição:
+          <time>{{ '01/01/2000' | date: dateFormat.simple }}</time>
+        </p>
       </div>
     </header>
 
     <main class="editor-content">
-      <form action="">
+      <form
+        action=""
+        [formGroup]="profileForm"
+        (ngSubmit)="onFormSubmit()"
+      >
         <header class="editor-content-header">
           <h2>editar informações do paciente</h2>
+
           <button
+            type="button"
+            class="ces-button-icon ces-button-variant-neutral"
+          >
+            <!-- tabindex="-1" - previne elemento de ser focado -->
+            <img
+              src="./assets/icon-arrow-circle-left.svg"
+              alt=""
+              tabindex="-1"
+            />
+          </button>
+
+          <button
+            *ngIf="isFormFieldsDisabled"
+            type="button"
+            class="ces-button ces-button-variant-neutral ces-element-dimension-fit-content"
+            (click)="handleEnableFormFields()"
+          >
+            editar formulário
+          </button>
+
+          <button
+            *ngIf="!isFormFieldsDisabled"
             type="submit"
             class="ces-button ces-button-variant-primary ces-element-dimension-fit-content"
           >
@@ -33,14 +63,24 @@
             >
               <label
                 for="last-appointment-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 última consulta
+
+                <span
+                  *ngIf="fieldControl.lastAppointment?.hasError('required')"
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
               </label>
+
               <input
                 required
                 id="last-appointment-field"
                 type="datetime-local"
+                class="ces-input"
+                formControlName="lastAppointment"
               />
             </div>
 
@@ -49,13 +89,16 @@
             >
               <label
                 for="next-appointment-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 próxima consulta
               </label>
+
               <input
                 id="next-appointment-field"
                 type="datetime-local"
+                class="ces-input"
+                formControlName="nextAppointment"
               />
             </div>
           </div>
@@ -72,16 +115,32 @@
               class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
             >
               <label
-                for="treatment-field"
-                class="ces-label-letterlized"
+                for="treatment-type-field"
+                class="ces-label ces-label-letterlized"
               >
                 tipo de tratamento
+
+                <span
+                  *ngIf="fieldControl.treatmentType?.hasError('required')"
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="fieldControl.treatmentType?.hasError('minlength')"
+                  class="ces-text-variant-danger"
+                >
+                  *deve conter mais que 03 caracteres
+                </span>
               </label>
+
               <input
                 required
-                id="treatment-field"
+                id="treatment-type-field"
                 type="text"
                 list="treatments"
+                class="ces-input"
+                formControlName="treatmentType"
               />
 
               <datalist id="treatments">
@@ -99,14 +158,24 @@
             >
               <label
                 for="treatment-start-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 iniciado em
+
+                <span
+                  *ngIf="fieldControl.treatmentStartedAt?.hasError('required')"
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
               </label>
+
               <input
                 required
                 id="treatment-start-field"
                 type="date"
+                class="ces-input"
+                formControlName="treatmentStartedAt"
               />
             </div>
 
@@ -115,13 +184,16 @@
             >
               <label
                 for="treatment-end-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 finalizado em
               </label>
+
               <input
                 id="treatment-end-field"
                 type="date"
+                class="ces-input"
+                formControlName="treatmentFinishedAt"
               />
             </div>
           </div>
@@ -139,48 +211,123 @@
             >
               <label
                 for="name-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 nome
+
+                <span
+                  *ngIf="fieldControl.name?.hasError('required')"
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="fieldControl.name?.hasError('minlength')"
+                  class="ces-text-variant-danger"
+                >
+                  *deve conter mais que 03 caracteres
+                </span>
               </label>
               <input
                 required
                 id="name-field"
                 type="text"
+                class="ces-input"
+                formControlName="name"
               />
             </div>
           </div>
 
           <div class="editor-content-section-line">
             <div
-              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
             >
               <label
                 for="cpf-field"
-                class="ces-label-capittalized"
+                class="ces-label ces-label-capittalized"
               >
                 cpf
+
+                <span
+                  *ngIf="fieldControl.cpf?.hasError('required')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="fieldControl.cpf?.hasError('minlength')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *deve conter 11 dígitos
+                </span>
+                <span
+                  *ngIf="fieldControl.cpf?.hasError('maxlength')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *deve conter menos que 11 digitos
+                </span>
+                <span
+                  *ngIf="fieldControl.cpf?.hasError('pattern')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *caractere inválido
+                </span>
               </label>
+
               <input
                 required
                 id="cpf-field"
                 type="text"
+                maxlength="11"
+                minlength="11"
+                class="ces-input"
+                formControlName="cpf"
               />
             </div>
 
             <div
-              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
             >
               <label
                 for="rg-field"
-                class="ces-label-capittalized"
+                class="ces-label ces-label-capittalized"
               >
                 rg
+
+                <span
+                  *ngIf="fieldControl.rg?.hasError('required')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="fieldControl.rg?.hasError('minlength')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *deve conter 09 dígitos
+                </span>
+                <span
+                  *ngIf="fieldControl.rg?.hasError('maxlength')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *deve conter menos que 11 digitos
+                </span>
+                <span
+                  *ngIf="fieldControl.rg?.hasError('pattern')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *caractere inválido
+                </span>
               </label>
+
               <input
                 required
                 id="rg-field"
                 type="text"
+                maxlength="11"
+                minlength="11"
+                class="ces-input"
+                formControlName="rg"
               />
             </div>
 
@@ -189,14 +336,24 @@
             >
               <label
                 for="birthdate-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 nascimento
+
+                <span
+                  *ngIf="fieldControl.birthdate.hasError('required')"
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
               </label>
+
               <input
                 required
                 id="birthdate-field"
                 type="date"
+                class="ces-input"
+                formControlName="birthdate"
               />
             </div>
 
@@ -205,17 +362,70 @@
             >
               <label
                 for="age-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 idade
+
+                <span
+                  *ngIf="fieldControl.age?.hasError('required')"
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="fieldControl.age?.hasError('min')"
+                  class="ces-text-variant-danger"
+                >
+                  *deve ser maior que 01 ano
+                </span>
+                <span
+                  *ngIf="fieldControl.age?.hasError('max')"
+                  class="ces-text-variant-danger"
+                >
+                  *deve ser menor que 150 anos
+                </span>
               </label>
+
               <input
                 required
                 id="age-field"
                 type="number"
                 min="1"
                 max="150"
-                class="input-number-arrowless"
+                class="ces-input ces-input-number-arrowless"
+                formControlName="age"
+              />
+            </div>
+
+            <div
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
+            >
+              <label
+                for="phone-field"
+                class="ces-label ces-label-letterlized"
+              >
+                telefone
+
+                <span
+                  *ngIf="fieldControl.phone.hasError('required')"
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="fieldControl.phone?.hasError('pattern')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *caractere inválido
+                </span>
+              </label>
+
+              <input
+                required
+                id="phone-field"
+                type="text"
+                class="ces-input ces-input-number-arrowless"
+                formControlName="phone"
               />
             </div>
           </div>
@@ -225,15 +435,77 @@
               class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
             >
               <label
-                for="address-field"
-                class="ces-label-letterlized"
+                for="email-field"
+                class="ces-label ces-label-letterlized"
               >
-                endereço
+                e-mail
+
+                <span
+                  *ngIf="fieldControl.email?.hasError('required')"
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="fieldControl.email?.hasError('email')"
+                  class="ces-text-variant-danger"
+                >
+                  *deve ser um e-mail válido
+                </span>
               </label>
+
+              <input
+                required
+                id="email-field"
+                type="email"
+                class="ces-input"
+                formControlName="email"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section
+          #address
+          class="editor-content-section"
+          formGroupName="address"
+        >
+          <p>endereço</p>
+
+          <div class="editor-content-section-line">
+            <div
+              class="ces-forms-field ces-element-dimension-entirely ces-element-responsiveness"
+            >
+              <label
+                for="address-field"
+                class="ces-label ces-label-letterlized"
+              >
+                logradouro
+
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.street?.hasError('required')
+                  "
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.street?.hasError('minlength')
+                  "
+                  class="ces-text-variant-danger"
+                >
+                  *deve conter mais que 03 caracteres
+                </span>
+              </label>
+
               <input
                 required
                 id="address-field"
                 type="text"
+                class="ces-input"
+                formControlName="street"
               />
             </div>
           </div>
@@ -244,29 +516,44 @@
             >
               <label
                 for="address-number-field"
-                class="ces-label-capittalized"
+                class="ces-label ces-label-capittalized"
               >
                 n°
+
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.number?.hasError('required')
+                  "
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
               </label>
+
               <input
                 required
                 id="address-number-field"
                 type="text"
+                class="ces-input"
+                formControlName="number"
               />
             </div>
 
             <div
-              class="ces-forms-field ces-element-dimension-large ces-element-responsiveness"
+              class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
             >
               <label
                 for="address-completation-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 complemento
               </label>
+
               <input
                 id="address-completation-field"
                 type="text"
+                class="ces-input"
+                formControlName="adjunct"
               />
             </div>
 
@@ -275,14 +562,34 @@
             >
               <label
                 for="address-city-field"
-                class="ces-label-letterlized"
+                class="ces-label ces-label-letterlized"
               >
                 cidade
+
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.city?.hasError('required')
+                  "
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.city?.hasError('minlength')
+                  "
+                  class="ces-text-variant-danger"
+                >
+                  *deve conter mais que 03 caracteres
+                </span>
               </label>
+
               <input
                 required
                 id="address-city-field"
                 type="text"
+                class="ces-input"
+                formControlName="city"
               />
             </div>
 
@@ -290,16 +597,51 @@
               class="ces-forms-field ces-element-dimension-average ces-element-responsiveness"
             >
               <label
-                for="address-uf-field"
-                class="ces-label-capittalized"
+                for="state-select"
+                class="ces-label ces-label-letterlized"
               >
-                uf
+                estado
+
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.state?.hasError('required')
+                  "
+                  class="ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.state?.hasError('minlength')
+                  "
+                  class="ces-text-variant-danger"
+                >
+                  *deve conter mais 01 caractere
+                </span>
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.state?.hasError('maxlength')
+                  "
+                  class="ces-text-variant-danger"
+                >
+                  *deve conter 02 caracteres
+                </span>
               </label>
-              <input
-                required
-                id="address-uf-field"
-                type="text"
-              />
+
+              <select
+                name="states"
+                id="state-select"
+                class="ces-input"
+                formControlName="state"
+              >
+                <option value="">--</option>
+                <option
+                  *ngFor="let state of states"
+                  [value]="state.id"
+                >
+                  {{ state.stateName }}
+                </option>
+              </select>
             </div>
 
             <div
@@ -307,14 +649,50 @@
             >
               <label
                 for="address-cep-field"
-                class="ces-label-capittalized"
+                class="ces-label ces-label-capittalized"
               >
                 cep
+
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.cep?.hasError('required')
+                  "
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *requerido
+                </span>
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.cep?.hasError('minlength')
+                  "
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *deve conter 08 dígitos
+                </span>
+                <span
+                  *ngIf="
+                    fieldControl.address.controls.cep?.hasError('maxlength')
+                  "
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *deve conter menos que 11 digitos
+                </span>
+                <span
+                  *ngIf="fieldControl.address.controls.cep?.hasError('pattern')"
+                  class="ces-label-dafaultlized ces-text-variant-danger"
+                >
+                  *caractere inválido
+                </span>
               </label>
+
               <input
                 required
                 id="address-cep-field"
                 type="text"
+                minlength="8"
+                maxlength="8"
+                class="ces-input"
+                formControlName="cep"
               />
             </div>
           </div>
@@ -332,6 +710,7 @@
               rows="5"
               placeholder="..."
               class="ces-text-area ces-element-dimension-entirely"
+              formControlName="pharmacy"
             ></textarea>
           </div>
         </section>
@@ -349,6 +728,7 @@
               rows="5"
               placeholder="..."
               class="ces-text-area ces-element-dimension-entirely"
+              formControlName="observations"
             ></textarea>
           </div>
         </section>
