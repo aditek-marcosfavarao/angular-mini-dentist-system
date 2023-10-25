@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Paciente } from '../@types/paciente';
+import { Profile } from '../@types/profile';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataServiceService {
-  private patient?: Paciente;
+  private profile?: Profile;
 
-  setPaciente(paciente: Paciente) {
-    this.patient = paciente;
+  setPaciente(profile: Profile) {
+    this.profile = profile;
   }
   getPaciente() {
-    return this.patient;
+    return this.profile;
   }
 }

@@ -23,9 +23,9 @@
           type="button"
           (click)="handleSelectProfile(p)"
         >
-          <app-avatar [avatarLetter]="p.firstName.substring(0, 1)"></app-avatar>
+          <app-avatar [avatarLetter]="p.name.substring(0, 1)"></app-avatar>
         </button>
-        <p class="name-patient">{{ p.firstName }} {{ p.lastName }}</p>
+        <p class="name-patient">{{ getSimpleName(p.name) }}</p>
       </div>
     </div>
 
@@ -46,7 +46,7 @@
     </div>
     <ng-template #elseAvatar>
       <app-avatar
-        [avatarLetter]="profile.firstName.substring(0, 1)"
+        [avatarLetter]="profile.name.substring(0, 1)"
         [large]="true"
       ></app-avatar>
     </ng-template>
@@ -59,12 +59,15 @@
           <h1>Clique em um paciente</h1>
         </div>
         <ng-template #elseBlock>
-          <h1>{{ profile.fullName }}</h1>
-          <h2>Tratamento Print 3D</h2>
-          <h3>Próxima consulta: 00</h3>
+          <h1>{{ profile.name }}</h1>
+          <h2>Tratamento {{ profile.treatmentType }}</h2>
+          <h3>
+            Próxima consulta:
+            {{ profile.nextAppointment | date: dateFormatted }}
+          </h3>
           <div class="aligment">
-            <h3>Rua Pontife Supremo , 777</h3>
-            <h3>Bragança Paulista / SP</h3>
+            <h3>{{ profile.address.street }} , {{ profile.address.number }}</h3>
+            <h3>{{ profile.address.city }} / {{ profile.address.state }}</h3>
           </div>
         </ng-template>
       </ng-template>

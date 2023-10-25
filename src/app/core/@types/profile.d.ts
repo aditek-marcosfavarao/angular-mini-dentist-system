@@ -1,32 +1,25 @@
-export interface Profile {
+export type Profile = {
   id: string;
-  appointment: {
-    lastApointment: Date;
-    nextApointment: Date;
+  lastAppointment: Date;
+  nextAppointment: Date;
+  treatmentType: string;
+  treatmentStartedAt: Date;
+  treatmentFinishedAt: Date;
+  name: string;
+  cpf: string;
+  rg: string;
+  birthdate: Date;
+  age: string;
+  phone: string;
+  email: string;
+  address: {
+    street: string;
+    number: string;
+    adjunct: string;
+    city: string;
+    state: string;
+    cep: string;
   };
-  treatment: {
-    treatmentType: string;
-    treatmentStart: Date;
-    treatmentEnd: Date;
-  };
-  user: {
-    name: string;
-    id: string;
-    document: string;
-    birthdate: Date;
-    age: number;
-    phone: string;
-    celphone: string;
-    email: string;
-    address: {
-      address: string;
-      number: number;
-      complement: string;
-      city: string;
-      uf: string;
-      cep: string;
-    };
-  };
-  medicineObservations: string;
+  pharmacy: string;
   observations: string;
-}
+};
