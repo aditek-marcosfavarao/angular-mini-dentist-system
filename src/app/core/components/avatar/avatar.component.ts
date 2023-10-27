@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+type AvatarClass = 'small' | 'medium' | 'large';
+
 @Component({
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
@@ -7,5 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class AvatarComponent {
   @Input() avatarLetter = '';
-  @Input() large = false;
+  @Input() avatarClass: AvatarClass = 'small';
 }

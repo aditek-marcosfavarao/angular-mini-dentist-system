@@ -42,12 +42,12 @@
   </nav>
   <header>
     <div *ngIf="!isProfileSelected; else elseAvatar">
-      <app-avatar [large]="true"></app-avatar>
+      <app-avatar avatarClass="large"></app-avatar>
     </div>
     <ng-template #elseAvatar>
       <app-avatar
         [avatarLetter]="profile.name.substring(0, 1)"
-        [large]="true"
+        avatarClass="large"
       ></app-avatar>
     </ng-template>
     <div class="info">

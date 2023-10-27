@@ -24,9 +24,10 @@ export class EditorComponent {
     complete: "dd 'de' MMMM 'de' yyyy",
   } as const;
 
+  avatarLetter = 'Marcos'.substring(0, 1);
   treatments: Treatment[] = treatments;
   states: State[] = states;
-  isFormFieldsDisabled = true;
+  isFormFieldsDisabled = true; //se está editando
 
   profileForm = this.formBuilder.group({
     lastAppointment: [

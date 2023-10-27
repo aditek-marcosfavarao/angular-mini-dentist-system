@@ -30,45 +30,25 @@
   gap: 1rem;
 
   &::before {
+
     content: '';
     background-color: var(--green-500);
-    width: 16rem;
-    height: 16rem;
-    padding: 1rem;
-    rotate: 50deg;
-
+    width: 100rem;
+    height: 35rem;
     position: absolute;
     top: 0;
-    left: -12rem;
+    left: 0;
+    rotate: 60deg;
+    translate: -50rem 14rem;
+
   }
-}
-
-.editor-header-avatar {
-  background-color: var(--white);
-  width: 6rem;
-  height: 6rem;
-  padding: 1rem;
-  border: 0;
-  outline: 1px solid var(--green-500);
-  border-radius: 50%;
-  z-index: 1;
-
-  position: relative;
-
-  &::after {
-    content: 'm';
-    color: var(--green-500);
-
-    text-align: right;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.75;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
+  @media(max-width: 480px){
+    &::before {
+      width: 9rem;
+      height: 20rem;
+      rotate: 37deg;
+      translate: -4rem -8rem;
+    }
   }
 }
 

@@ -19,7 +19,4 @@ export class ModalComponent {
   buttonCustomModal() {
     this.modalCustomEvent.emit();
   }
-  confirmAction(event: { stopPropagation: () => void }) {
-    event.stopPropagation();
-  }
 }

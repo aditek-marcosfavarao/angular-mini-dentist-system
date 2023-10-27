@@ -1,26 +1,17 @@
-<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
-<div
-  class="popup-wrapper"
-  (click)="closeModal()"
->
-  <div
-    class="popup"
-    (click)="confirmAction($event)"
-  >
+<div class="popup-wrapper">
+  <div class="popup">
     <div>
       <h2>{{ customButtonTitle }}</h2>
       <div class="content"><ng-content></ng-content></div>
       <div class="buttons">
         <button
-          class="ces-button ces-element-dimension-fit-content"
-          [ngClass]="'ces-button-variant-neutral'"
+          class="ces-button ces-button-variant-neutral ces-element-dimension-fit-content"
           (click)="closeModal()"
         >
           Cancelar
         </button>
         <button
-          class="ces-button ces-element-dimension-fit-content teste"
+          class="ces-button ces-element-dimension-fit-content"
           [ngClass]="'ces-button-variant-' + customButtonColor"
           (click)="buttonCustomModal()"
         >
