@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Server, createServer, Model } from 'miragejs';
+import { createServer, Model } from 'miragejs';
 import { profiles } from 'src/app/data/profile';
 
 @Injectable({
