@@ -140,3 +140,8 @@
   gap: 0.75rem;
   flex-wrap: wrap;
 }
+
+.highlighted-text{
+  color: var(--danger-500);
+  font-weight:  800;
+}

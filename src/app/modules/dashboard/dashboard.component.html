@@ -1,5 +1,6 @@
 <div class="dashboard-container">
   <nav>
+    <!-- Seta esquerda carrossel -->
     <button
       type="button"
       (click)="scrollLeft()"
@@ -10,11 +11,13 @@
         alt=""
       />
     </button>
+    <!-- Container com todos os paciente cadastrados -->
     <div
       class="user-aligment"
       #widgetsContent
       [ngClass]="profileClassListBased"
     >
+      <!-- Apenas as informações de um paciente -->
       <div
         class="icon-patient"
         *ngFor="let p of profilesList"
@@ -23,12 +26,12 @@
           type="button"
           (click)="handleSelectProfile(p)"
         >
-          <app-avatar [avatarLetter]="p.name.substring(0, 1)"></app-avatar>
+          <app-avatar [avatarLetter]="getProfileNameLetter(p)" />
         </button>
         <p class="name-patient">{{ getSimpleName(p.name) }}</p>
       </div>
     </div>
-
+    <!-- Seta direita carrossel -->
     <button
       type="button"
       (click)="scrollRight()"
@@ -40,42 +43,48 @@
       />
     </button>
   </nav>
-  <header>
-    <div *ngIf="!isProfileSelected; else elseAvatar">
-      <app-avatar avatarClass="large"></app-avatar>
-    </div>
-    <ng-template #elseAvatar>
-      <app-avatar
-        [avatarLetter]="profile.name.substring(0, 1)"
-        avatarClass="large"
-      ></app-avatar>
-    </ng-template>
-    <div class="info">
-      <div *ngIf="isDataEmpty; else elseBlock1">
+  <section #card>
+    <!-- Avatar do card -->
+    <ng-container>
+      <div *ngIf="!isProfileSelected">
+        <app-avatar avatarClass="large" />
+      </div>
+      <div *ngIf="isProfileSelected">
+        <app-avatar
+          [avatarLetter]="getProfileNameLetter(profile)"
+          avatarClass="large"
+        />
+      </div>
+    </ng-container>
+
+    <!-- Informações do paciente -->
+    <div class="info-card">
+      <div *ngIf="isDataEmpty && !isProfileSelected">
         <h1>Não há pacientes cadastrados ainda</h1>
       </div>
-      <ng-template #elseBlock1>
-        <div *ngIf="!isProfileSelected; else elseBlock">
-          <h1>Clique em um paciente</h1>
+      <div *ngIf="!isDataEmpty && !isProfileSelected">
+        <h1>Clique em um paciente</h1>
+      </div>
+      <div *ngIf="!isDataEmpty && isProfileSelected">
+        <h1>{{ profile.name }}</h1>
+        <h2>Tratamento {{ profile.treatmentType }}</h2>
+        <h3>
+          Próxima consulta:
+          {{ profile.nextAppointment | date: dateFormatted }}
+        </h3>
+        <div class="aligment">
+          <h3>{{ profile.address.street }} , {{ profile.address.number }}</h3>
+          <h3>{{ profile.address.city }} / {{ profile.address.state }}</h3>
         </div>
-        <ng-template #elseBlock>
-          <h1>{{ profile.name }}</h1>
-          <h2>Tratamento {{ profile.treatmentType }}</h2>
-          <h3>
-            Próxima consulta:
-            {{ profile.nextAppointment | date: dateFormatted }}
-          </h3>
-          <div class="aligment">
-            <h3>{{ profile.address.street }} , {{ profile.address.number }}</h3>
-            <h3>{{ profile.address.city }} / {{ profile.address.state }}</h3>
-          </div>
-        </ng-template>
-      </ng-template>
+      </div>
     </div>
+
+    <!-- Botões de edição e de deletar -->
     <div
       *ngIf="isProfileSelected"
       class="icons"
     >
+      <!-- Botão de editar -->
       <button
         type="button"
         class="icon-edit-card"
@@ -86,6 +95,8 @@
           alt=""
         />
       </button>
+
+      <!-- Botão de excluir -->
       <button
         type="button"
         class="icon-delet-card"
@@ -97,7 +108,9 @@
         />
       </button>
     </div>
-  </header>
+  </section>
+
+  <!-- Modal de confirmação de exclusão  -->
   <app-modal
     *ngIf="isModalVisible"
     (modalCustomEvent)="onDeletePatient()"

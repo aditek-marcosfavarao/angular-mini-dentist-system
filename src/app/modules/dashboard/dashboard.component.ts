@@ -168,13 +168,8 @@ export class DashboardComponent {
     this.isProfileSelected = true;
   }
 
-  getProfileFirstAndLastName(name: string) {
-    const splittedName = name.split(' ');
-    return splittedName[0] + ' ' + splittedName[splittedName.length - 1];
-  }
-
-  getProfileNameLetter(name: string) {
-    return name.substring(0, 1);
+  getProfileNameLetter(profile: Profile) {
+    return profile.name.substring(0, 1);
   }
 
   getSimpleName(name: string) {
@@ -193,14 +188,13 @@ export class DashboardComponent {
     this.isModalVisible = false;
     this.isProfileSelected = false;
     this.isDataEmpty = !this.profilesList.length;
-    console.log(this.isDataEmpty);
   };
 
   goToEditionPage(profile: Profile) {
-    console.log('Direcionar pra tela edição', profile);
     this.dataService.setPaciente(profile);
     this.router.navigate(['editor']);
   }
+
   onCloseModal() {
     this.isModalVisible = false;
   }

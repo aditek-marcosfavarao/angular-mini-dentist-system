@@ -28,6 +28,7 @@ export class EditorComponent {
   treatments: Treatment[] = treatments;
   states: State[] = states;
   isFormFieldsDisabled = true; //se está editando
+  isModalVisible = false;
 
   profileForm = this.formBuilder.group({
     lastAppointment: [
@@ -118,7 +119,7 @@ export class EditorComponent {
 
     // +chamar (fake-)api para enviar valores modo assíncrono
     // +chamar (fake-)api para obter os novos valores do banco de dados
-    console.log(this.profileForm.value);
+    // console.log(this.profileForm.value);
     this.onDisableFormFields();
   }
 
@@ -134,5 +135,21 @@ export class EditorComponent {
 
   handleBackToPage() {
     this.router.navigate(['dashboard']);
+  }
+
+  handleClickAction() {
+    if (!this.isFormFieldsDisabled) {
+      this.handleOpenModal();
+      return;
+    }
+    this.handleBackToPage();
+  }
+
+  handleOpenModal() {
+    this.isModalVisible = true;
+  }
+
+  onCloseModal() {
+    this.isModalVisible = false;
   }
 }

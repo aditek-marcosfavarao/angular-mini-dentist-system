@@ -61,7 +61,7 @@
   }
 }
 
-.dashboard-container header{
+.dashboard-container section{
 
   background-color: var(--white);
   width: 80vw;
@@ -90,7 +90,7 @@
     translate: -47rem 14rem;
   }
 
-  & .info{
+  & .info-card{
     background-color: var(--white);
     flex: 1;
     margin: 0 2rem;
@@ -162,7 +162,7 @@
       translate: 0 -10rem;
     }
 
-    & .info {
+    & .info-card {
       padding:1rem;
       margin: 0;
 

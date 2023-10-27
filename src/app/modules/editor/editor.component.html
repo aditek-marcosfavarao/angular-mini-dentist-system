@@ -28,7 +28,7 @@
             type="button"
             title="voltar a página anterior"
             class="ces-button-icon ces-button-variant-neutral"
-            (click)="handleBackToPage()"
+            (click)="handleClickAction()"
           >
             <!-- tabindex="-1" - previne elemento de ser focado -->
             <img
@@ -37,6 +37,23 @@
               tabindex="-1"
             />
           </button>
+          <app-modal
+            *ngIf="isModalVisible"
+            (modalCustomEvent)="handleBackToPage()"
+            (modalEventClose)="onCloseModal()"
+            customButtonName="Confirmar"
+            customButtonColor="danger"
+            customButtonTitle="Ação necessária"
+          >
+            <div>
+              <p>
+                Ao realizar essa ação, você perderá
+                <span class="highlighted-text">todas</span> as informações
+                alteradas que não foram salvas.<br />
+                Deseja continuar?
+              </p>
+            </div>
+          </app-modal>
 
           <button
             *ngIf="isFormFieldsDisabled"
