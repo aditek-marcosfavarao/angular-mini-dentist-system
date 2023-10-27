@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
-enum Path {
-  pathLogin = 'http://localhost:4200/login',
-}
+import { DatabaseMockService } from './core/services/database.mock.service';
+import { ProfileService } from './core/services/profile.service';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +8,19 @@ enum Path {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private databaseMockService: DatabaseMockService,
+    private profileService: ProfileService
+  ) {
+    this.databaseMockService.deployMirageJsServer();
+    this.getProfiles();
+  }
 
-  title = 'angular-mini-dentist-system';
-
-  navPath = this.router.url === Path.pathLogin;
-
-  ngOnAfterInit() {
-    console.log(this.navPath ?? 'num é bro');
+  private getProfiles() {
+    this.profileService.getProfiles().subscribe({
+      next: (response) => console.log(response),
+      error: (error) =>
+        console.error('Could not retrieve profiles 😢: ', error),
+    });
   }
 }
