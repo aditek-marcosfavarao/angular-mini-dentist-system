@@ -54,6 +54,7 @@
     & .name-patient{
       width: 6rem;
       text-align: center;
+      text-wrap: wrap;
       margin: 5px 0px;
       font-weight: bold;
       font-size: 1.17rem;

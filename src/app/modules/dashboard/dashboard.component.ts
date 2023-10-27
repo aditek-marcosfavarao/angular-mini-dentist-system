@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { Paciente } from 'src/app/core/@types/paciente';
 import { Profile } from 'src/app/core/@types/profile';
-import { DataServiceService } from 'src/app/core/services/data-service.service';
+import { perfilsServices } from 'src/app/core/services/perfils.service';
 
 type ProfileClass = 'pcenter' | 'pspace';
 
@@ -18,6 +18,11 @@ type ProfileClass = 'pcenter' | 'pspace';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
+  constructor(
+    private perfilsService: perfilsServices,
+    private router: Router
+  ) {}
+
   @Output() newItemEvent = new EventEmitter<Paciente>();
 
   @ViewChild('widgetsContent')
@@ -140,11 +145,6 @@ export class DashboardComponent {
   profileClassListBased: ProfileClass =
     this.profilesList.length >= 10 ? 'pspace' : 'pcenter';
 
-  constructor(
-    private dataService: DataServiceService,
-    private router: Router
-  ) {}
-
   public scrollRight(): void {
     this.widgetsContent.nativeElement.scrollTo({
       left: this.widgetsContent.nativeElement.scrollLeft + 150,
@@ -191,7 +191,9 @@ export class DashboardComponent {
   };
 
   goToEditionPage(profile: Profile) {
-    this.dataService.setPaciente(profile);
+    console.log('Direcionar pra tela edição', profile);
+    this.perfilsService.setProfile(profile);
+
     this.router.navigate(['editor']);
   }
 

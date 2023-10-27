@@ -7,7 +7,7 @@ import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.c
 import { DefaultLayoutComponent } from './modules/default-layout/default-layout.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: 'editor', component: EditorComponent },
     ],
   },
+  { path: 'login', component: LoginComponent },
   {
     path: '**',
     component: PageNotFoundComponent,

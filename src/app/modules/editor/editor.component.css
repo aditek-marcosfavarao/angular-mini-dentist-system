@@ -1,6 +1,6 @@
 .editor-container {
   background-color: var(--white);
-  margin: 1rem 0;
+  margin: 1rem;
 }
 
 .editor-display {
@@ -11,11 +11,6 @@
   border-radius: 4px;
   box-shadow: 0px 0px 8px 1px var(--dark-300);
   overflow: hidden;
-
-
-  @media (max-width: 720px) {
-    margin: 1rem 1rem;
-  }
 }
 
 .editor-header {
