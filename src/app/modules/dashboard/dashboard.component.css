@@ -58,11 +58,12 @@
       margin: 5px 0px;
       font-weight: bold;
       font-size: 1.17rem;
+      text-transform: capitalize;
     }
   }
 }
 
-.dashboard-container section{
+.dashboard-container section {
 
   background-color: var(--white);
   width: 80vw;
@@ -124,6 +125,7 @@
     flex-direction: row;
     margin-top: 4rem;
     gap: 7rem;
+    text-transform: capitalize;
   }
 
   & .icons{
@@ -172,6 +174,7 @@
         flex-direction: column;
         gap: 0;
         margin: 2rem 0 0 0;
+        text-transform: capitalize;
       }
     }
 
@@ -194,6 +197,10 @@
       }
     }
   }
+}
+
+.profile-name {
+  text-transform: capitalize;
 }
 
 .pspace {

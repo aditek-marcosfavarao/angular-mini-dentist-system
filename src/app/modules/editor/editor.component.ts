@@ -1,30 +1,70 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { State } from 'src/app/core/@types/state';
 import { Treatment } from 'src/app/core/@types/treatment';
+import { Profile } from 'src/app/core/@types/profile';
+
+import { ProfileService } from 'src/app/core/services/profile.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 import { states } from 'src/app/data/state';
 import { treatments } from 'src/app/data/treatment';
+import { profileStorage } from 'src/app/data/storage';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css'],
 })
-export class EditorComponent {
+export class EditorComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
+    private router: Router,
+    private profileService: ProfileService,
+    private localStorageService: LocalStorageService,
+    private authService: AuthService
+  ) {
+    const isUserLogged = this.authService.getIsUserLoggedIn();
+
+    if (!isUserLogged) {
+      this.router.navigate(['notAuthorized']);
+      return;
+    }
+  }
+
+  ngOnInit() {
+    const storedProfileId =
+      this.localStorageService.getData(profileStorage.id) ?? '';
+
+    if (!storedProfileId.length) return;
+
+    this.profileSubscription = this.profileService
+      .fetchProfile(storedProfileId)
+      .subscribe({
+        next: (response) => {
+          this.profile = response;
+          this.fillFormFields(response);
+        },
+        error: (error) => console.error(error),
+      });
+  }
+
+  ngOnDestroy() {
+    this.profileSubscription.unsubscribe();
+  }
 
   readonly dateFormat = {
     simple: "dd'/'MM'/'yyyy",
     complete: "dd 'de' MMMM 'de' yyyy",
   } as const;
 
-  avatarLetter = 'Marcos'.substring(0, 1);
+  profileSubscription = new Subscription();
+
+  profile: Profile = {} as Profile;
   treatments: Treatment[] = treatments;
   states: State[] = states;
   isFormFieldsDisabled = true; //se está editando
@@ -107,19 +147,43 @@ export class EditorComponent {
     pharmacy: [{ value: '', disabled: true }],
     observations: [{ value: '', disabled: true }],
   });
-
   fieldControl = this.profileForm.controls;
 
   // functions
+  private fillFormFields(profile: Profile) {
+    this.profileForm.patchValue({
+      lastAppointment: profile.lastAppointment,
+      nextAppointment: profile.nextAppointment,
+      treatmentType: profile.treatmentType,
+      treatmentStartedAt: profile.treatmentStartedAt,
+      treatmentFinishedAt: profile.treatmentFinishedAt,
+      name: profile.name,
+      cpf: profile.cpf,
+      rg: profile.rg,
+      birthdate: profile.birthdate,
+      age: profile.age,
+      phone: profile.phone,
+      email: profile.email,
+      pharmacy: profile.pharmacy,
+      observations: profile.observations,
+      address: {
+        street: profile.address.street,
+        number: profile.address.number,
+        adjunct: profile.address.adjunct,
+        city: profile.address.city,
+        state: profile.address.state,
+        cep: profile.address.cep,
+      },
+    });
+  }
+
   onFormSubmit() {
     if (!this.profileForm.valid) {
       console.error('-> please check form validation');
       return;
     }
 
-    // +chamar (fake-)api para enviar valores modo assíncrono
-    // +chamar (fake-)api para obter os novos valores do banco de dados
-    // console.log(this.profileForm.value);
+    console.log(this.profileForm.value);
     this.onDisableFormFields();
   }
 

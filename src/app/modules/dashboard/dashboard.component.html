@@ -1,54 +1,54 @@
 <div class="dashboard-container">
   <nav>
-    <!-- Seta esquerda carrossel -->
     <button
       type="button"
       (click)="scrollLeft()"
       #arowLeft
     >
       <img
-        src="../../../assets/icon-caret-circle-left.svg"
+        src="./assets/icon-caret-circle-left.svg"
         alt=""
       />
     </button>
-    <!-- Container com todos os paciente cadastrados -->
+
     <div
       class="user-aligment"
       #widgetsContent
       [ngClass]="profileClassListBased"
     >
-      <!-- Apenas as informações de um paciente -->
       <div
         class="icon-patient"
-        *ngFor="let p of profilesList"
+        *ngFor="let profile of profiles"
       >
         <button
           type="button"
-          (click)="handleSelectProfile(p)"
+          (click)="handleSelectProfile(profile)"
         >
-          <app-avatar [avatarLetter]="getProfileNameLetter(p)" />
+          <app-avatar [avatarLetter]="getProfileNameLetter(profile)" />
         </button>
-        <p class="name-patient">{{ getSimpleName(p.name) }}</p>
+        <p class="name-patient">{{ getSimpleName(profile.name) }}</p>
       </div>
     </div>
-    <!-- Seta direita carrossel -->
+
     <button
       type="button"
       (click)="scrollRight()"
       #arowRight
     >
       <img
-        src="../../../assets/icon-caret-circle-right.svg"
+        src="./assets/icon-caret-circle-right.svg"
         alt=""
       />
     </button>
   </nav>
+
   <section #card>
     <!-- Avatar do card -->
     <ng-container>
       <div *ngIf="!isProfileSelected">
         <app-avatar avatarClass="large" />
       </div>
+
       <div *ngIf="isProfileSelected">
         <app-avatar
           [avatarLetter]="getProfileNameLetter(profile)"
@@ -62,18 +62,20 @@
       <div *ngIf="isDataEmpty && !isProfileSelected">
         <h1>Não há pacientes cadastrados ainda</h1>
       </div>
+
       <div *ngIf="!isDataEmpty && !isProfileSelected">
         <h1>Clique em um paciente</h1>
       </div>
+
       <div *ngIf="!isDataEmpty && isProfileSelected">
-        <h1>{{ profile.name }}</h1>
-        <h2>Tratamento {{ profile.treatmentType }}</h2>
+        <h1 class="profile-name">{{ profile.name }}</h1>
+        <h2>Tratamento: {{ profile.treatmentType }}</h2>
         <h3>
           Próxima consulta:
-          {{ profile.nextAppointment | date: dateFormatted }}
+          {{ profile.nextAppointment | date: dateFormat }}
         </h3>
         <div class="aligment">
-          <h3>{{ profile.address.street }} , {{ profile.address.number }}</h3>
+          <h3>{{ profile.address.street }}, {{ profile.address.number }}</h3>
           <h3>{{ profile.address.city }} / {{ profile.address.state }}</h3>
         </div>
       </div>
@@ -88,10 +90,10 @@
       <button
         type="button"
         class="icon-edit-card"
-        (click)="goToEditionPage(profile)"
+        (click)="goToEditionPage()"
       >
         <img
-          src="../../../assets/icon-pencil-simple-line.svg"
+          src="./assets/icon-pencil-simple-line.svg"
           alt=""
         />
       </button>

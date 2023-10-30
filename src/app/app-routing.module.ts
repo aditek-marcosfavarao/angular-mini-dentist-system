@@ -18,6 +18,10 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   {
+    path: 'notAuthorized',
+    component: PageNotFoundComponent,
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

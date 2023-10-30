@@ -21,6 +21,10 @@
   &:hover, &:focus {
     filter: brightness(1.05);
   }
+
+  @media(max-width: 480px) {
+    font-size: 0.75rem;
+  }
 }
 
 .ces-button-icon {

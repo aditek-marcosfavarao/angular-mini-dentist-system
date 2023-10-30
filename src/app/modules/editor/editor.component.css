@@ -104,6 +104,24 @@
       text-transform: uppercase;
     }
   };
+
+  @media(max-width: 480px) {
+    flex-direction: column;
+
+    & h2 {
+      text-align: center;
+    }
+  }
+}
+
+.editor-content-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  @media(max-width: 480px) {
+    width: 100%;
+  }
 }
 
 .editor-content-section {

@@ -10,7 +10,11 @@ export class ProfileService {
 
   private readonly profilesUrl = '/api/profiles';
 
-  public getProfiles() {
+  public fetchProfiles() {
     return this.httpClient.get<Profile[]>(this.profilesUrl);
+  }
+
+  public fetchProfile(profileId: string) {
+    return this.httpClient.get<Profile>(this.profilesUrl + '/' + profileId);
   }
 }

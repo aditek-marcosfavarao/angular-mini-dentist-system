@@ -16,20 +16,20 @@
         >
           <label
             for="treatment-type-field"
-            class="ces-label ces-label-letterlized"
+            class="ces-label ces-label-capittalized"
           >
             e-mail
 
             <ng-container *ngIf="elementTouched.inputEmail">
               <span
                 *ngIf="fieldControl.email?.hasError('required')"
-                class="ces-text-variant-danger"
+                class="ces-label-letterlized ces-text-variant-danger"
               >
                 *requerido
               </span>
               <span
                 *ngIf="fieldControl.email?.hasError('email')"
-                class="ces-text-variant-danger"
+                class="ces-label-letterlized ces-text-variant-danger"
               >
                 *insira um email válido
               </span>
@@ -53,14 +53,14 @@
         >
           <label
             for="password-field"
-            class="ces-label ces-label-letterlized"
+            class="ces-label ces-label-capittalized"
           >
             senha
 
             <ng-container *ngIf="elementTouched.inputPassword">
               <span
                 *ngIf="fieldControl.password?.hasError('required')"
-                class="ces-text-variant-danger"
+                class="ces-label-letterlized ces-text-variant-danger"
               >
                 *requerido
               </span>

@@ -2,15 +2,17 @@
   <div class="editor-display">
     <header class="editor-header">
       <app-avatar
-        [avatarLetter]="avatarLetter"
+        [avatarLetter]="profile.name.substring(0, 1)"
         avatarClass="medium"
       />
       <div class="editor-header-info">
-        <h2>marcos adriano lorencini favarão</h2>
-        <h3>tratamento completo</h3>
+        <h2>{{ profile.name }}</h2>
+        <h3>Tratamento: {{ profile.treatmentType }}</h3>
         <p>
           última edição:
-          <time>{{ '01/01/2000' | date: dateFormat.simple }}</time>
+          <time>{{
+            profile.lastProfileEdition | date: dateFormat.simple
+          }}</time>
         </p>
       </div>
     </header>
@@ -24,53 +26,38 @@
         <header class="editor-content-header">
           <h2>editar informações do paciente</h2>
 
-          <button
-            type="button"
-            title="voltar a página anterior"
-            class="ces-button-icon ces-button-variant-neutral"
-            (click)="handleClickAction()"
-          >
-            <!-- tabindex="-1" - previne elemento de ser focado -->
-            <img
-              src="./assets/icon-arrow-circle-left.svg"
-              alt=""
-              tabindex="-1"
-            />
-          </button>
-          <app-modal
-            *ngIf="isModalVisible"
-            (modalCustomEvent)="handleBackToPage()"
-            (modalEventClose)="onCloseModal()"
-            customButtonName="Confirmar"
-            customButtonColor="danger"
-            customButtonTitle="Ação necessária"
-          >
-            <div>
-              <p>
-                Ao realizar essa ação, você perderá
-                <span class="highlighted-text">todas</span> as informações
-                alteradas que não foram salvas.<br />
-                Deseja continuar?
-              </p>
-            </div>
-          </app-modal>
+          <div class="editor-content-header-actions">
+            <button
+              type="button"
+              title="voltar a página anterior"
+              class="ces-button-icon ces-button-variant-neutral"
+              (click)="handleClickAction()"
+            >
+              <!-- tabindex="-1" - previne elemento de ser focado -->
+              <img
+                src="./assets/icon-arrow-circle-left.svg"
+                alt=""
+                tabindex="-1"
+              />
+            </button>
 
-          <button
-            *ngIf="isFormFieldsDisabled"
-            type="button"
-            class="ces-button ces-button-variant-neutral ces-element-dimension-fit-content"
-            (click)="handleEnableFormFields()"
-          >
-            editar formulário
-          </button>
+            <button
+              *ngIf="isFormFieldsDisabled"
+              type="button"
+              class="ces-button ces-button-variant-neutral ces-element-dimension-fit-content ces-element-responsiveness"
+              (click)="handleEnableFormFields()"
+            >
+              editar formulário
+            </button>
 
-          <button
-            *ngIf="!isFormFieldsDisabled"
-            type="submit"
-            class="ces-button ces-button-variant-primary ces-element-dimension-fit-content"
-          >
-            salvar
-          </button>
+            <button
+              *ngIf="!isFormFieldsDisabled"
+              type="submit"
+              class="ces-button ces-button-variant-primary ces-element-dimension-fit-content ces-element-responsiveness"
+            >
+              salvar
+            </button>
+          </div>
         </header>
 
         <section
@@ -100,7 +87,7 @@
               <input
                 required
                 id="last-appointment-field"
-                type="datetime-local"
+                type="date"
                 class="ces-input"
                 formControlName="lastAppointment"
               />
@@ -118,7 +105,7 @@
 
               <input
                 id="next-appointment-field"
-                type="datetime-local"
+                type="date"
                 class="ces-input"
                 formControlName="nextAppointment"
               />
@@ -751,4 +738,24 @@
       </form>
     </main>
   </div>
+
+  <app-modal
+    *ngIf="isModalVisible"
+    (modalCustomEvent)="handleBackToPage()"
+    (modalEventClose)="onCloseModal()"
+    customButtonName="Confirmar"
+    customButtonColor="danger"
+    customButtonTitle="Ação necessária"
+  >
+    <div>
+      <p>
+        Ao realizar essa ação, você perderá
+        <span class="highlighted-text">todas</span> as informações alteradas que
+        não foram salvas.
+        <br />
+        <br />
+        Deseja continuar?
+      </p>
+    </div>
+  </app-modal>
 </div>

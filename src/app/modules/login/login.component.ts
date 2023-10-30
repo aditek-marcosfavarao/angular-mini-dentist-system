@@ -1,6 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthLogin } from 'src/app/core/@types/auth';
+
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Router } from '@angular/router';
 
 const ICON_PATH = {
   eyeOpen: './assets/icon-eye.svg',
@@ -18,7 +21,8 @@ type Input = 'text' | 'password';
 export class LoginComponent {
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {}
 
   @ViewChild('inputLoginRef')
@@ -47,16 +51,25 @@ export class LoginComponent {
       return;
     }
 
-    // // localStorage.setItem('id', JSON.stringify(0));
-    this.router.navigate(['dashboard']);
+    const payload: AuthLogin = {
+      email: this.loginForm.controls.email.value ?? '',
+      password: this.loginForm.controls.password.value ?? '',
+    };
+
+    this.authService.login(payload).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.authService.setIsLoggedIn();
+      },
+      error: (error) => console.error('login error: ' + error.message),
+      complete: () => this.router.navigate(['dashboard']),
+    });
   }
 
   onInputBlur(
     blurElement: HTMLInputElement,
     inputName: keyof typeof this.elementTouched
   ) {
-    console.log(blurElement.className);
-
     const hasInputBeenTouched = blurElement.className.includes('ng-dirty');
     this.elementTouched[inputName] = hasInputBeenTouched;
   }
